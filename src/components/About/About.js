@@ -94,7 +94,7 @@ function About() {
           </Col>
         </Row>
         <h1 className="project-heading">
-          Educational<strong className="teal">Background </strong>
+          Educational <strong className="teal">Background </strong>
         </h1>
 
         {educationData.map((education, index) => (
