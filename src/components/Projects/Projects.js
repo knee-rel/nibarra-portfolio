@@ -8,8 +8,20 @@ import ateneoTrade from "../../Assets/Portfolio/ateneo-trade.png";
 import brigada from "../../Assets/Portfolio/brigada.png";
 import byte from "../../Assets/Portfolio/byte.png";
 import managerio from "../../Assets/Portfolio/managerio.png";
+import digitalEspresso from "../../Assets/Portfolio/digitalEspresso.png";
+import polydoor from "../../Assets/Portfolio/polydoor.png";
+import stockMarket from "../../Assets/Portfolio/stockMarket.png";
 
 function Projects() {
+  const dataScienceProjects = [
+    {
+      imgPath: stockMarket,
+      isBlog: false,
+      title: "Lululemon Stock Market Analysis",
+      description: "A stock market analysis on stock market.",
+      ghLink: "https://github.com/knee-rel/DescriptiveStats_Lululemon",
+    },
+  ];
   const webProjectsData = [
     {
       imgPath: ateneoTrade,
@@ -41,11 +53,18 @@ function Projects() {
       demoLink: "https://www.brigadaeskwela.org/",
     },
     {
-      imgPath: brigada,
+      imgPath: digitalEspresso,
       isBlog: false,
-      title: "Brigada E-skwela",
-      description: "An advocacy website for brigada e-skwela",
-      demoLink: "https://www.brigadaeskwela.org/",
+      title: "Full Stack Digital Espresso",
+      description: "An app for digital espresso, a practice.",
+      demoLink: "https://mern-digital-espresso.vercel.app/",
+    },
+    {
+      imgPath: polydoor,
+      isBlog: false,
+      title: "Polydoor",
+      description: "A catalog website for doors.",
+      demoLink: "https://polydoor-philippines.com/",
     },
   ];
   return (
@@ -78,12 +97,26 @@ function Projects() {
         </Row>
         <h3 className="project-heading">
           Mobile <strong className="teal">Development</strong>
-          <p>Coming soon</p>
         </h3>
+
+        <p>Coming soon</p>
         <h3 className="project-heading">
           Data <strong className="teal">Science</strong>
-          <p>Coming soon</p>
         </h3>
+        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+          {dataScienceProjects.map((project, index) => (
+            <Col
+              xl={3}
+              lg={4}
+              md={6}
+              sm={12}
+              className="project-card"
+              key={index}
+            >
+              <ProjectCard {...project} />
+            </Col>
+          ))}
+        </Row>
       </Container>
     </Container>
   );
