@@ -14,7 +14,7 @@ function Education({ title, university, program, date, details, imageUrl }) {
             width: "auto", // Ensure the image is not constrained by its width
             maxHeight: "100%", // Allow the height to adjust accordingly
             ...(window.innerWidth <= 768
-              ? { width: "30px", height: "30px" }
+              ? { width: "100px", height: "100px" }
               : {}), // Adjust size for tablet screens (md breakpoint)
           }}
           fluid

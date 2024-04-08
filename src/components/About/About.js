@@ -2,12 +2,12 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import Github from "./Github";
-import WebTechStack from "./WebTechStack";
 import Aboutcard from "./AboutCard";
 import Education from "./Education";
-import computerImg from "../../Assets/computer.png";
-import laptopImg from "../../Assets/about.png";
-import Toolstack from "./Toolstack";
+
+// Image Imports
+import smuLogo from "../../Assets/smu_logo.png";
+import nusLogo from "../../Assets/nus_logo.png";
 
 function About() {
   const educationData = [
@@ -46,7 +46,7 @@ function About() {
         "St. Faber Leadership Award",
       ],
       imageUrl:
-        "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1017f306-5cdc-4458-b82e-f4d6e73e9628/nus_logo.png",
+        "https://www.pngkey.com/png/detail/242-2427180_ateneo-de-manila-logo.png",
     },
     {
       title: "NUS Enterprise Summer Programme",
@@ -57,8 +57,7 @@ function About() {
         "Two-week intensive summer program",
         "Exposure to Singaporean start-up scene",
       ],
-      imageUrl:
-        "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3103168f-c0a3-4524-bfd7-e78dfd5173b4/smu_logo.png",
+      imageUrl: nusLogo,
     },
     {
       title: "Online Data Camp",
@@ -70,8 +69,7 @@ function About() {
         "Exposure to Python libraries (pandas, matplotlib, etc)",
         "Analyze companies and their position in the Stock Market",
       ],
-      imageUrl:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngegg.com%2Fen%2Fpng-wjhud&psig=AOvVaw3xmv20ElI-DNRcJZXdqHxQ&ust=1711971505886000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCODQ1o21noUDFQAAAAAdAAAAABAE",
+      imageUrl: smuLogo,
     },
   ];
   return (
