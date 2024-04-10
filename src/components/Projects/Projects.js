@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
@@ -13,17 +14,9 @@ import polydoor from "../../Assets/Portfolio/polydoor.png";
 import stockMarket from "../../Assets/Portfolio/stockMarket.png";
 
 function Projects() {
-  const dataScienceProjects = [
-    {
-      imgPath: stockMarket,
-      isBlog: false,
-      title: "Lululemon Stock Market Analysis",
-      description: "A stock market analysis on stock market.",
-      ghLink: "https://github.com/knee-rel/DescriptiveStats_Lululemon",
-    },
-  ];
   const webProjectsData = [
     {
+      id: "1",
       imgPath: ateneoTrade,
       isBlog: false,
       title: "Ateneo Trade",
@@ -32,6 +25,7 @@ function Projects() {
       demoLink: "https://ateneo-trade.vercel.app/",
     },
     {
+      id: "2",
       imgPath: managerio,
       isBlog: false,
       title: "Manager.io",
@@ -39,6 +33,7 @@ function Projects() {
       demoLink: "https://managerio.vercel.app/employees",
     },
     {
+      id: "3",
       imgPath: byte,
       isBlog: false,
       title: "BYTE",
@@ -46,6 +41,7 @@ function Projects() {
       demoLink: "#",
     },
     {
+      id: "4",
       imgPath: brigada,
       isBlog: false,
       title: "Brigada E-skwela",
@@ -53,6 +49,7 @@ function Projects() {
       demoLink: "https://www.brigadaeskwela.org/",
     },
     {
+      id: "5",
       imgPath: digitalEspresso,
       isBlog: false,
       title: "Full Stack Digital Espresso",
@@ -60,11 +57,22 @@ function Projects() {
       demoLink: "https://mern-digital-espresso.vercel.app/",
     },
     {
+      id: "6",
       imgPath: polydoor,
       isBlog: false,
       title: "Polydoor",
       description: "A catalog website for doors.",
       demoLink: "https://polydoor-philippines.com/",
+    },
+  ];
+  const dataScienceProjects = [
+    {
+      id: "20",
+      imgPath: stockMarket,
+      isBlog: false,
+      title: "Lululemon Stock Market Analysis",
+      description: "A stock market analysis on stock market.",
+      ghLink: "https://github.com/knee-rel/DescriptiveStats_Lululemon",
     },
   ];
   return (
@@ -91,7 +99,10 @@ function Projects() {
               className="project-card"
               key={index}
             >
-              <ProjectCard {...project} />
+              <Link to={`/project/${project.id}`}>
+                {" "}
+                <ProjectCard {...project} />
+              </Link>
             </Col>
           ))}
         </Row>
