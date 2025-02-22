@@ -13,68 +13,68 @@ import digitalEspresso from "../../Assets/Portfolio/digitalEspresso.png";
 import polydoor from "../../Assets/Portfolio/polydoor.png";
 import stockMarket from "../../Assets/Portfolio/stockMarket.png";
 
-function Projects() {
-  const webProjectsData = [
-    {
-      id: "1",
-      imgPath: ateneoTrade,
-      isBlog: false,
-      title: "Ateneo Trade",
-      description:
-        "Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase. Have features which allows user for realtime messaging, image sharing as well as supports reactions on messages.",
-      demoLink: "https://ateneo-trade.vercel.app/",
-    },
-    {
-      id: "2",
-      imgPath: managerio,
-      isBlog: false,
-      title: "Manager.io",
-      description: "An HR Management application",
-      demoLink: "https://managerio.vercel.app/employees",
-    },
-    {
-      id: "3",
-      imgPath: byte,
-      isBlog: false,
-      title: "BYTE",
-      description: "A website for BYTE",
-      demoLink: "#",
-    },
-    {
-      id: "4",
-      imgPath: brigada,
-      isBlog: false,
-      title: "Brigada E-skwela",
-      description: "An advocacy website for brigada e-skwela",
-      demoLink: "https://www.brigadaeskwela.org/",
-    },
-    {
-      id: "5",
-      imgPath: digitalEspresso,
-      isBlog: false,
-      title: "Full Stack Digital Espresso",
-      description: "An app for digital espresso, a practice.",
-      demoLink: "https://mern-digital-espresso.vercel.app/",
-    },
-    {
-      id: "6",
-      imgPath: polydoor,
-      isBlog: false,
-      title: "Polydoor",
-      description: "A catalog website for doors.",
-      demoLink: "https://polydoor-philippines.com/",
-    },
-  ];
-  const dataScienceProjects = [
-    {
-      id: "20",
-      imgPath: stockMarket,
-      isBlog: false,
-      title: "Lululemon Stock Market Analysis",
-      description: "A stock market analysis on stock market.",
-      ghLink: "https://github.com/knee-rel/DescriptiveStats_Lululemon",
-    },
-  ];
+function Projects({ webProjectsData, dataScienceProjects }) {
+  // const webProjectsData = [
+  //   {
+  //     id: "1",
+  //     imgPath: ateneoTrade,
+  //     isBlog: false,
+  //     title: "Ateneo Trade",
+  //     description:
+  //       "Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase. Have features which allows user for realtime messaging, image sharing as well as supports reactions on messages.",
+  //     demoLink: "https://ateneo-trade.vercel.app/",
+  //   },
+  //   {
+  //     id: "2",
+  //     imgPath: managerio,
+  //     isBlog: false,
+  //     title: "Manager.io",
+  //     description: "An HR Management application",
+  //     demoLink: "https://managerio.vercel.app/employees",
+  //   },
+  //   {
+  //     id: "3",
+  //     imgPath: byte,
+  //     isBlog: false,
+  //     title: "BYTE",
+  //     description: "A website for BYTE",
+  //     demoLink: "#",
+  //   },
+  //   {
+  //     id: "4",
+  //     imgPath: brigada,
+  //     isBlog: false,
+  //     title: "Brigada E-skwela",
+  //     description: "An advocacy website for brigada e-skwela",
+  //     demoLink: "https://www.brigadaeskwela.org/",
+  //   },
+  //   {
+  //     id: "5",
+  //     imgPath: digitalEspresso,
+  //     isBlog: false,
+  //     title: "Full Stack Digital Espresso",
+  //     description: "An app for digital espresso, a practice.",
+  //     demoLink: "https://mern-digital-espresso.vercel.app/",
+  //   },
+  //   {
+  //     id: "6",
+  //     imgPath: polydoor,
+  //     isBlog: false,
+  //     title: "Polydoor",
+  //     description: "A catalog website for doors.",
+  //     demoLink: "https://polydoor-philippines.com/",
+  //   },
+  // ];
+  // const dataScienceProjects = [
+  //   {
+  //     id: "20",
+  //     imgPath: stockMarket,
+  //     isBlog: false,
+  //     title: "Lululemon Stock Market Analysis",
+  //     description: "A stock market analysis on stock market.",
+  //     ghLink: "https://github.com/knee-rel/DescriptiveStats_Lululemon",
+  //   },
+  // ];
   return (
     <Container fluid className="project-section">
       <Particle />

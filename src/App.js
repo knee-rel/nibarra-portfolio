@@ -7,11 +7,12 @@ import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import ProjectDetails from "./components/Projects/ProjectDetails";
+import { webProjectsData, dataScienceProjects } from "./data/ProjectData";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
+  Navigate
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
@@ -37,10 +38,18 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/project" element={<Projects />} />
+          <Route path="/project" element={<Projects webProjectsData={webProjectsData} dataScienceProjects={dataScienceProjects} />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/project/:id" component={ProjectDetails} />
+          <Route
+            path="/project/:id"
+            element={
+              <ProjectDetails
+                webProjectsData={webProjectsData}
+                dataScienceProjects={dataScienceProjects}
+              />
+            }
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
