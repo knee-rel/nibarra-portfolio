@@ -115,6 +115,7 @@ function Projects({ webProjectsData, dataScienceProjects }) {
           Data <strong className="teal">Science</strong>
         </h3>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        // In Projects.js, update the data science projects section:
           {dataScienceProjects.map((project, index) => (
             <Col
               xl={3}
@@ -124,7 +125,9 @@ function Projects({ webProjectsData, dataScienceProjects }) {
               className="project-card"
               key={index}
             >
-              <ProjectCard {...project} />
+              <Link to={`/project/${project.id}`}>
+                <ProjectCard {...project} />
+              </Link>
             </Col>
           ))}
         </Row>

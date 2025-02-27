@@ -34,15 +34,13 @@ function Particle() {
           },
         },
         interactivity: {
+          detect_on: "canvas", // Change from window to canvas
           events: {
             onclick: {
-              enable: true,
-              mode: "push",
+              enable: false, // Disable click interactivity
             },
-          },
-          modes: {
-            push: {
-              particles_nb: 1,
+            onhover: {
+              enable: false, // Disable hover interactivity if present
             },
           },
         },

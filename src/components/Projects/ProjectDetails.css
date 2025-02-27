@@ -70,3 +70,22 @@
         padding: 10px;
     }
 }
+
+/* Add these styles to ProjectDetails.css */
+
+.project-section .btn-primary {
+    cursor: pointer !important;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-section .btn-primary:hover {
+    transform: translateX(-5px);
+    opacity: 0.9;
+}
+
+.project-section .btn-primary:active {
+    transform: translateX(-2px);
+}
