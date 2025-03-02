@@ -1,26 +1,31 @@
-// src/data/ProjectData.js
+import ateneoTrade from '../Assets/Portfolio/ateneo-trade.png'
+import managerio from '../Assets/Portfolio/managerio.png'
+import byte from '../Assets/Portfolio/byte.png'
+import polydoor from '../Assets/Portfolio/polydoor.png'
+import digitalEspresso from '../Assets/Portfolio/digitalEspresso.png'
+import stockMarket from '../Assets/Portfolio/stockMarket.png'
+import brigada from '../Assets/Portfolio/brigada.png'
 
 export const webProjectsData = [
     {
         id: "1",
-        imgPath: "/project-images/ateneo-trade.png", // Update with your image paths
+        imgPath: ateneoTrade,
         isBlog: false,
         title: "Ateneo Trade",
-        description: "Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase. Have features which allows user for realtime messaging, image sharing as well as supports reactions on messages.",
+        description: "Enabling users to buy and sell, in moderated environments.",
         demoLink: "https://ateneo-trade.vercel.app/",
         ghLink: "https://github.com/yourusername/ateneo-trade",
         features: [
-            "Real-time messaging",
-            "Image sharing",
-            "Message reactions",
+            "E-commerce",
+            "Full-Stack",
             "User authentication"
         ],
-        status: "Active",
+        status: "Completed",
         timeline: "Started: Jan 2023, Released: Mar 2023"
     },
     {
         id: "2",
-        imgPath: "/project-images/managerio.png",
+        imgPath: managerio,
         isBlog: false,
         title: "Manager.io",
         description: "An HR Management application that streamlines employee data management, attendance tracking, and performance reviews. Built with modern web technologies and focused on user experience.",
@@ -32,14 +37,65 @@ export const webProjectsData = [
             "Performance reviews",
             "Report generation"
         ],
-        status: "Active",
-        timeline: "Started: Apr 2023, Released: Jun 2023"
+        status: "Completed",
+        timeline: "Started: Mar 2024, Released: Mar 2024"
     },
     {
         id: "3",
-        imgPath: "/project-images/byte.png",
+        imgPath: byte,
         isBlog: false,
         title: "BYTE",
+        description: "A comprehensive website for BYTE organization showcasing their events, team members, and achievements. Features a modern design with interactive elements.",
+        demoLink: "#",
+        ghLink: "https://github.com/yourusername/byte",
+        features: [
+            "Responsive design",
+            "Team showcase",
+            "Project portfolio",
+            "Contact form"
+        ],
+        status: "Completed",
+        timeline: "Started: Sept 2021, Released: Oct 2021"
+    },
+    {
+        id: "4",
+        imgPath: polydoor,
+        isBlog: false,
+        title: "Polydoor PH",
+        description: "A comprehensive website for BYTE organization showcasing their services, team members, and achievements. Features a modern design with interactive elements.",
+        demoLink: "https://polydoor-philippines.com/",
+        ghLink: "https://github.com/yourusername/byte",
+        features: [
+            "Responsive design",
+            "Quotation Form",
+            "Business Inventory",
+            "Contact form"
+        ],
+        status: "Completed",
+        timeline: "Started: Jan 2023, Released: Aug 2023"
+    },
+    {
+        id: "5",
+        imgPath: digitalEspresso,
+        isBlog: false,
+        title: "Place Finder",
+        description: "Making avid travellers users place documentation easier by allowing them to review and document their favorite places.",
+        demoLink: "#",
+        ghLink: "https://github.com/yourusername/byte",
+        features: [
+            "Maps Integration",
+            "Team showcase",
+            "Project portfolio",
+            "Contact form"
+        ],
+        status: "Maintenance",
+        timeline: "Started: Jul 2023, Released: Aug 2023"
+    },
+    {
+        id: "6",
+        imgPath: brigada,
+        isBlog: false,
+        title: "Brigada E-skwela",
         description: "A comprehensive website for BYTE organization showcasing their services, team members, and achievements. Features a modern design with interactive elements.",
         demoLink: "#",
         ghLink: "https://github.com/yourusername/byte",
@@ -49,15 +105,35 @@ export const webProjectsData = [
             "Project portfolio",
             "Contact form"
         ],
-        status: "Maintenance",
-        timeline: "Started: Jul 2023, Released: Aug 2023"
-    }
+        status: "Completed",
+        timeline: "Started: Sept 2021, Released: Oct 2021"
+    },
 ];
+
+export const mobileApplicationsProjects = [
+    {
+        id: "51",
+        imgPath: brigada,
+        isBlog: false,
+        title: "Brigada E-skwela",
+        description: "A comprehensive website for BYTE organization showcasing their services, team members, and achievements. Features a modern design with interactive elements.",
+        demoLink: "#",
+        ghLink: "https://github.com/yourusername/byte",
+        features: [
+            "Responsive design",
+            "Team showcase",
+            "Project portfolio",
+            "Contact form"
+        ],
+        status: "Completed",
+        timeline: "Started: Sept 2021, Released: Oct 2021"
+    }
+]
 
 export const dataScienceProjects = [
     {
         id: "20",
-        imgPath: "/project-images/stockMarket.png",
+        imgPath: stockMarket,
         isBlog: false,
         title: "Lululemon Stock Market Analysis",
         description: "A comprehensive stock market analysis focusing on Lululemon's performance, market trends, and predictive modeling using Python and various data science libraries.",
