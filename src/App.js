@@ -7,6 +7,7 @@ import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import ProjectDetails from "./components/Projects/ProjectDetails";
+// Check the correct path for your project data
 import { webProjectsData, dataScienceProjects, mobileApplicationsProjects } from "./data/ProjectData";
 import {
   BrowserRouter as Router,

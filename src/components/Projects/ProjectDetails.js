@@ -4,9 +4,8 @@ import { useParams } from "react-router-dom";
 import { Container, Row, Col, Card, Badge } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
-import { BsGithub, BsArrowLeft } from "react-icons/bs";
+import { BsGithub, BsArrowLeft, BsCircleFill, BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import Particle from "../Particle";
-import ScreenshotCarousel from "./ScreenshotCarousel";
 import VideoPlayer from "./VideoPlayer";
 import ProjectFeatures from "./ProjectFeatures";
 import "./MobileProjectStyles.css";
@@ -15,6 +14,9 @@ import "./MobileProjectDisplay.css";
 function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicationsProjects }) {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  // State to track active carousel slide
+  const [activeSlide, setActiveSlide] = React.useState(0);
 
   const allProjects = [
     ...(webProjectsData || []),
@@ -43,8 +45,22 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
   }
 
   // Determine if this is a mobile app project by checking the ID
-  // Assuming mobile app IDs start with "5" - adjust as needed for your system
   const isMobileProject = project.id.toString().startsWith("5");
+
+  // Handler functions for carousel
+  const handlePrevSlide = () => {
+    setActiveSlide(prev => {
+      if (prev === 0) return (project.media?.length || 1) - 1;
+      return prev - 1;
+    });
+  };
+
+  const handleNextSlide = () => {
+    setActiveSlide(prev => {
+      if (prev === (project.media?.length || 1) - 1) return 0;
+      return prev + 1;
+    });
+  };
 
   return (
     <Container fluid className="project-section">
@@ -74,28 +90,80 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
                     App <span style={{ color: "#64ffda" }}>Preview</span>
                   </h3>
 
-                  <div className="d-flex justify-content-center">
-                    <div className="phone-frame">
-                      <div className="phone-screen">
-                        <img
-                          src={project.imgPath}
-                          alt={project.title}
-                          className="phone-screenshot"
-                        />
+                  <div className="d-flex flex-column align-items-center">
+                    {/* Main Phone Display with Carousel Controls */}
+                    <div className="carousel-main">
+                      {project.media && project.media.length > 1 && (
+                        <button className="carousel-control prev" onClick={handlePrevSlide}>
+                          <BsChevronLeft />
+                        </button>
+                      )}
+
+                      <div className="phone-frame">
+                        <div className="phone-screen">
+                          <img
+                            src={project.media ? project.media[activeSlide].path : project.imgPath}
+                            alt={project.title}
+                            className="phone-screenshot"
+                          />
+                        </div>
                       </div>
+
+                      {project.media && project.media.length > 1 && (
+                        <button className="carousel-control next" onClick={handleNextSlide}>
+                          <BsChevronRight />
+                        </button>
+                      )}
                     </div>
+
+                    {/* Caption below main image */}
+                    <p style={{ color: "white", marginTop: "15px", textAlign: "center" }}>
+                      {project.media ? project.media[activeSlide].caption : "Main map view showing charger locations"}
+                    </p>
+
+                    {/* Thumbnail indicators */}
+                    {project.media && project.media.length > 0 && (
+                      <div className="thumbnail-navigation">
+                        <Row className="mt-2 justify-content-center">
+                          {project.media.map((item, index) => (
+                            <Col xs={2} key={index} className="px-1 thumbnail-col">
+                              <div
+                                className={`thumbnail-indicator ${index === activeSlide ? "active" : ""}`}
+                                onClick={() => setActiveSlide(index)}
+                              >
+                                <BsCircleFill size={10} />
+                              </div>
+                            </Col>
+                          ))}
+                        </Row>
+                      </div>
+                    )}
+
+                    {/* Thumbnail gallery */}
+                    {project.media && project.media.length > 0 && (
+                      <Row className="mt-4 justify-content-center">
+                        {project.media.map((item, index) => (
+                          <Col xs={4} md={2} key={index} className="mb-3">
+                            <div
+                              className={`thumbnail-container ${index === activeSlide ? "active" : ""}`}
+                              onClick={() => setActiveSlide(index)}
+                            >
+                              <div className="phone-frame-small">
+                                <div className="phone-screen-small">
+                                  <img
+                                    src={item.path}
+                                    alt={item.caption}
+                                    className="phone-screenshot-small"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </Col>
+                        ))}
+                      </Row>
+                    )}
                   </div>
                 </div>
-
-                {/* App Screenshots Carousel */}
-                {project.media && project.media.length > 0 && (
-                  <div className="mb-5">
-                    <h3 style={{ color: "white", textAlign: "center" }}>
-                      App <span style={{ color: "#64ffda" }}>Screens</span>
-                    </h3>
-                    <ScreenshotCarousel screenshots={project.media} />
-                  </div>
-                )}
 
                 {/* Project Demo Video (if available) */}
                 {project.demoVideo && (
@@ -108,6 +176,7 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
                 )}
               </>
             ) : (
+              // Standard project display code (unchanged)
               <>
                 {/* Standard Project Screenshot */}
                 <Card className="mb-5" bg="dark">
@@ -192,7 +261,7 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
               <p style={{ color: "white", textAlign: "justify" }}>{project.description}</p>
             </div>
 
-            {/* Key Features Section using our new component */}
+            {/* Key Features Section */}
             <ProjectFeatures features={project.features} />
           </Col>
 
@@ -222,6 +291,7 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
                   </div>
                 </div>
 
+                {/* Rest of sidebar content - unchanged */}
                 {/* Project Links */}
                 <div className="project-links">
                   {project.ghLink && (
@@ -284,7 +354,7 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
                   </div>
                 )}
 
-                {/* Add mobile-specific information section */}
+                {/* Mobile-specific information */}
                 {isMobileProject && (
                   <div className="mt-4">
                     <h4 style={{ color: "white" }}>Platforms</h4>

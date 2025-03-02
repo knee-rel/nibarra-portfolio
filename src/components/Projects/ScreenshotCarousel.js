@@ -53,18 +53,19 @@ const ScreenshotCarousel = ({ screenshots }) => {
                     </button>
                 </div>
 
-                {/* Caption */}
+                {/* Caption - moved above indicators */}
                 <div className="carousel-caption">
                     {screenshots[activeIndex].caption}
                 </div>
 
-                {/* Thumbnail navigation */}
+                {/* Indicators */}
                 <div className="carousel-indicators">
                     {screenshots.map((screenshot, index) => (
                         <button
                             key={index}
                             className={`carousel-indicator ${index === activeIndex ? "active" : ""}`}
                             onClick={() => goToSlide(index)}
+                            aria-label={`Go to slide ${index + 1}`}
                         >
                             <BsCircleFill />
                         </button>
@@ -72,7 +73,7 @@ const ScreenshotCarousel = ({ screenshots }) => {
                 </div>
             </div>
 
-            {/* Thumbnails row */}
+            {/* Optional: Thumbnails row - you can keep or remove based on your design */}
             <Row className="carousel-thumbnails">
                 {screenshots.map((screenshot, index) => (
                     <Col key={index} xs={4} md={2} className="thumbnail-col">

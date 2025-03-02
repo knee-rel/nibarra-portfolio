@@ -70,3 +70,131 @@
 .app-store-badge:hover {
     transform: translateY(-3px);
 }
+
+/* Thumbnail navigation styles */
+.thumbnail-navigation {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thumbnail-indicator {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgba(100, 255, 218, 0.3);
+}
+
+.thumbnail-indicator.active {
+    color: #64ffda;
+    transform: scale(1.2);
+}
+
+.thumbnail-container {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.thumbnail-container.active {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-5px);
+}
+
+/* Project Details Mobile View */
+.phone-frame-small {
+    margin: 0 auto;
+}
+
+.carousel-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+/* Carousel Controls */
+.carousel-control {
+    background: rgba(100, 255, 218, 0.2);
+    color: #64ffda;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+.carousel-control:hover {
+    background: rgba(100, 255, 218, 0.4);
+    transform: scale(1.1);
+}
+
+.carousel-control.prev {
+    left: 5%;
+}
+
+.carousel-control.next {
+    right: 5%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .carousel-control.prev {
+        left: 0%;
+    }
+
+    .carousel-control.next {
+        right: 0%;
+    }
+}
+
+/* Thumbnail styles */
+.thumbnail-navigation {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thumbnail-indicator {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgba(100, 255, 218, 0.3);
+}
+
+.thumbnail-indicator.active {
+    color: #64ffda;
+    transform: scale(1.2);
+}
+
+.thumbnail-container {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.thumbnail-container.active {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-5px);
+}

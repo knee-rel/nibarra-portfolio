@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col, Card } from "react-bootstrap";
-// In MobileProjectDisplay.js
-import './MobileProjectDisplay.css';  // Make sure this file exists
+import './MobileProjectDisplay.css';
 
 // This component is specifically designed to display mobile app screenshots
 // in a phone frame for a more realistic presentation
@@ -23,6 +22,30 @@ const MobileProjectDisplay = ({ project }) => {
                                 className="phone-screenshot"
                             />
                         </div>
+                    </div>
+                </div>
+
+                {/* Caption for main image */}
+                <div className="text-center mt-3">
+                    <p style={{ color: "white" }}>Main map view showing charger locations</p>
+                </div>
+
+                {/* Carousel indicators styled on their own line */}
+                <div className="carousel-indicators-container">
+                    <div className="d-flex justify-content-center mt-2 gap-2">
+                        {[0, 1, 2, 3, 4].map(index => (
+                            <div
+                                key={index}
+                                className={`carousel-dot ${index === 0 ? 'active' : ''}`}
+                                style={{
+                                    width: "10px",
+                                    height: "10px",
+                                    borderRadius: "50%",
+                                    background: index === 0 ? "#64ffda" : "rgba(100, 255, 218, 0.3)",
+                                    display: "inline-block"
+                                }}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

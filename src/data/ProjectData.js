@@ -6,6 +6,7 @@ import digitalEspresso from '../Assets/Portfolio/digitalEspresso.png'
 import stockMarket from '../Assets/Portfolio/stockMarket.png'
 import brigada from '../Assets/Portfolio/brigada.png'
 import beevrgoMap from '../Assets/beevrgo/beevrgo_map.png'
+import beevrgoMap2 from '../Assets/beevrgo/beevrgo_map_2.png'
 
 export const webProjectsData = [
     {
@@ -134,7 +135,7 @@ export const mobileApplicationsProjects = [
             },
             {
                 type: "screenshot",
-                path: beevrgoMap, // Replace with actual screenshot
+                path: beevrgoMap2, // Replace with actual screenshot
                 caption: "Charger details screen"
             },
             {
@@ -144,7 +145,7 @@ export const mobileApplicationsProjects = [
             },
             {
                 type: "screenshot",
-                path: beevrgoMap, // Replace with actual screenshot
+                path: beevrgoMap2, // Replace with actual screenshot
                 caption: "Settings and preferences"
             },
             {
