@@ -51,7 +51,7 @@ function App() {
               <ProjectDetails
                 webProjectsData={webProjectsData}
                 dataScienceProjects={dataScienceProjects}
-                mobileProjectsData={mobileApplicationsProjects} // Fix the prop name to match what ProjectDetails expects
+                mobileApplicationsProjects={mobileApplicationsProjects} // Fixed prop name
               />
             }
           />

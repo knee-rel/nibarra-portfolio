@@ -1,0 +1,75 @@
+.project-features {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    color: white;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.highlight {
+    color: #64ffda;
+}
+
+.feature-grid {
+    margin-top: 20px;
+}
+
+.feature-column {
+    margin-bottom: 20px;
+}
+
+.feature-card {
+    background-color: rgba(30, 30, 30, 0.6) !important;
+    border: 1px solid rgba(100, 255, 218, 0.2) !important;
+    border-radius: 12px !important;
+    height: 100%;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(100, 255, 218, 0.5) !important;
+}
+
+.feature-card .card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.feature-icon {
+    color: #64ffda;
+    font-size: 28px;
+    margin-bottom: 15px;
+    background-color: rgba(100, 255, 218, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+    background-color: rgba(100, 255, 218, 0.2);
+}
+
+.feature-text {
+    color: white;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .feature-column {
+        padding: 0 10px;
+    }
+}

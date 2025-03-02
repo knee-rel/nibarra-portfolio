@@ -6,47 +6,38 @@ import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
 import { BsGithub, BsArrowLeft } from "react-icons/bs";
 import Particle from "../Particle";
-import MobileProjectDisplay from "./MobileProjectDisplay"; // Import the mobile component
-import "./MobileProjectStyles.css"; // Import the mobile styles
+import ScreenshotCarousel from "./ScreenshotCarousel";
+import VideoPlayer from "./VideoPlayer";
+import ProjectFeatures from "./ProjectFeatures";
+import "./MobileProjectStyles.css";
+import "./MobileProjectDisplay.css";
 
-function ProjectDetails({ webProjectsData, dataScienceProjects, mobileProjectsData }) {
+function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicationsProjects }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Fix potential naming inconsistency: mobileApplicationsProjects vs mobileProjectsData
-  const mobileProjects = mobileProjectsData || [];
-
-  // Combine all project types, ensuring each array exists before spreading
   const allProjects = [
     ...(webProjectsData || []),
     ...(dataScienceProjects || []),
-    ...mobileProjects
+    ...(mobileApplicationsProjects || [])
   ];
 
-  // Debug output (you can remove this in production)
-  console.log("Looking for project ID:", id);
-  console.log("Available projects:", allProjects.map(p => p.id));
-
-  // Find the project with matching ID
   const project = allProjects.find((p) => p.id.toString() === id.toString());
 
   if (!project) {
     return (
       <Container fluid className="project-section">
-        <Particle />
-        <Container>
-          <h2 className="text-center text-white">Project not found</h2>
-          <div className="text-center">
-            <Button
-              variant="primary"
-              className="mb-4"
-              onClick={() => navigate('/project')}
-              style={{ position: "relative", zIndex: 10 }}
-            >
-              <BsArrowLeft /> Back to Projects
-            </Button>
-          </div>
-        </Container>
+        <h2 className="text-center text-white">Project not found</h2>
+        <div className="text-center">
+          <Button
+            variant="primary"
+            className="mb-4"
+            onClick={() => navigate('/project')}
+            style={{ position: "relative", zIndex: 10 }}
+          >
+            <BsArrowLeft /> Back to Projects
+          </Button>
+        </div>
       </Container>
     );
   }
@@ -70,13 +61,52 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileProjectsDa
           </Button>
         </div>
 
-        <Row className="mt-4">
-          <Col md={8}>
-            <h1 style={{ color: "white", marginBottom: "20px" }}>{project.title}</h1>
+        <h1 style={{ color: "white", marginBottom: "20px", textAlign: "center" }}>{project.title}</h1>
 
-            {/* Conditionally render based on project type */}
+        <Row className="mt-4">
+          <Col lg={8}>
+            {/* Main content area */}
             {isMobileProject ? (
-              <MobileProjectDisplay project={project} />
+              <>
+                {/* Mobile App Preview */}
+                <div className="mb-5">
+                  <h3 style={{ color: "white", marginBottom: "20px", textAlign: "center" }}>
+                    App <span style={{ color: "#64ffda" }}>Preview</span>
+                  </h3>
+
+                  <div className="d-flex justify-content-center">
+                    <div className="phone-frame">
+                      <div className="phone-screen">
+                        <img
+                          src={project.imgPath}
+                          alt={project.title}
+                          className="phone-screenshot"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* App Screenshots Carousel */}
+                {project.media && project.media.length > 0 && (
+                  <div className="mb-5">
+                    <h3 style={{ color: "white", textAlign: "center" }}>
+                      App <span style={{ color: "#64ffda" }}>Screens</span>
+                    </h3>
+                    <ScreenshotCarousel screenshots={project.media} />
+                  </div>
+                )}
+
+                {/* Project Demo Video (if available) */}
+                {project.demoVideo && (
+                  <div className="mb-5">
+                    <h3 style={{ color: "white", textAlign: "center" }}>
+                      App <span style={{ color: "#64ffda" }}>Demo</span>
+                    </h3>
+                    <VideoPlayer videoId={project.demoVideo} title={`${project.title} Demo`} />
+                  </div>
+                )}
+              </>
             ) : (
               <>
                 {/* Standard Project Screenshot */}
@@ -96,36 +126,7 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileProjectsDa
                   </Card.Body>
                 </Card>
 
-                {/* Project Description */}
-                <div className="mb-5">
-                  <h3 style={{ color: "white" }}>
-                    Project <span style={{ color: "#64ffda" }}>Overview</span>
-                  </h3>
-                  <p style={{ color: "white", textAlign: "justify" }}>{project.description}</p>
-                </div>
-
-                {/* Key Features Section */}
-                <div className="mb-5">
-                  <h3 style={{ color: "white" }}>
-                    Key <span style={{ color: "#64ffda" }}>Features</span>
-                  </h3>
-                  <ul style={{ color: "white" }}>
-                    {project.features ? (
-                      project.features.map((feature, index) => (
-                        <li key={index}>{feature}</li>
-                      ))
-                    ) : (
-                      <>
-                        <li>Responsive Design</li>
-                        <li>User Authentication</li>
-                        <li>Real-time Updates</li>
-                        <li>Interactive UI Components</li>
-                      </>
-                    )}
-                  </ul>
-                </div>
-
-                {/* Media Gallery Section (for screenshots and recordings) */}
+                {/* Media Gallery for Web Projects */}
                 {project.media && project.media.length > 0 && (
                   <div className="mb-5">
                     <h3 style={{ color: "white" }}>
@@ -183,39 +184,19 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileProjectsDa
               </>
             )}
 
-            {/* Display project description for mobile projects */}
-            {isMobileProject && (
-              <>
-                <div className="mb-5">
-                  <h3 style={{ color: "white" }}>
-                    Project <span style={{ color: "#64ffda" }}>Overview</span>
-                  </h3>
-                  <p style={{ color: "white", textAlign: "justify" }}>{project.description}</p>
-                </div>
+            {/* Project Overview */}
+            <div className="mb-5">
+              <h3 style={{ color: "white", textAlign: "center" }}>
+                Project <span style={{ color: "#64ffda" }}>Overview</span>
+              </h3>
+              <p style={{ color: "white", textAlign: "justify" }}>{project.description}</p>
+            </div>
 
-                <div className="mb-5">
-                  <h3 style={{ color: "white" }}>
-                    Key <span style={{ color: "#64ffda" }}>Features</span>
-                  </h3>
-                  <ul style={{ color: "white" }}>
-                    {project.features ? (
-                      project.features.map((feature, index) => (
-                        <li key={index}>{feature}</li>
-                      ))
-                    ) : (
-                      <>
-                        <li>User-friendly interface</li>
-                        <li>Responsive design</li>
-                        <li>Cross-platform</li>
-                      </>
-                    )}
-                  </ul>
-                </div>
-              </>
-            )}
+            {/* Key Features Section using our new component */}
+            <ProjectFeatures features={project.features} />
           </Col>
 
-          <Col md={4}>
+          <Col lg={4}>
             <Card bg="dark" className="mb-4">
               <Card.Body>
                 {/* Project Tools */}
