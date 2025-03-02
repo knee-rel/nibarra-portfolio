@@ -4,16 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 
-// Images Imports
-import ateneoTrade from "../../Assets/Portfolio/ateneo-trade.png";
-import brigada from "../../Assets/Portfolio/brigada.png";
-import byte from "../../Assets/Portfolio/byte.png";
-import managerio from "../../Assets/Portfolio/managerio.png";
-import digitalEspresso from "../../Assets/Portfolio/digitalEspresso.png";
-import polydoor from "../../Assets/Portfolio/polydoor.png";
-import stockMarket from "../../Assets/Portfolio/stockMarket.png";
-
-function Projects({ webProjectsData, dataScienceProjects }) {
+function Projects({ webProjectsData, dataScienceProjects, mobileApplicationsProjects }) {
   // const webProjectsData = [
   //   {
   //     id: "1",
@@ -100,22 +91,41 @@ function Projects({ webProjectsData, dataScienceProjects }) {
               key={index}
             >
               <Link to={`/project/${project.id}`}>
-                {" "}
                 <ProjectCard {...project} />
               </Link>
             </Col>
           ))}
         </Row>
+
         <h3 className="project-heading">
           Mobile <strong className="teal">Development</strong>
         </h3>
 
-        <p>Coming soon</p>
+        {mobileApplicationsProjects && mobileApplicationsProjects.length > 0 ? (
+          <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+            {mobileApplicationsProjects.map((project, index) => (
+              <Col
+                xl={3}
+                lg={4}
+                md={6}
+                sm={12}
+                className="project-card"
+                key={index}
+              >
+                <Link to={`/project/${project.id}`}>
+                  <ProjectCard {...project} />
+                </Link>
+              </Col>
+            ))}
+          </Row>
+        ) : (
+          <p style={{ color: "white" }}>Coming soon</p>
+        )}
+
         <h3 className="project-heading">
           Data <strong className="teal">Science</strong>
         </h3>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-        // In Projects.js, update the data science projects section:
           {dataScienceProjects.map((project, index) => (
             <Col
               xl={3}

@@ -7,7 +7,7 @@ import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import ProjectDetails from "./components/Projects/ProjectDetails";
-import { webProjectsData, dataScienceProjects } from "./data/ProjectData";
+import { webProjectsData, dataScienceProjects, mobileApplicationsProjects } from "./data/ProjectData";
 import {
   BrowserRouter as Router,
   Route,
@@ -38,7 +38,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/project" element={<Projects webProjectsData={webProjectsData} dataScienceProjects={dataScienceProjects} />} />
+          <Route path="/project" element={<Projects webProjectsData={webProjectsData} dataScienceProjects={dataScienceProjects} mobileApplicationsProjects={mobileApplicationsProjects} />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
           <Route
@@ -47,6 +47,7 @@ function App() {
               <ProjectDetails
                 webProjectsData={webProjectsData}
                 dataScienceProjects={dataScienceProjects}
+                mobileApplicationsProjects={mobileApplicationsProjects}
               />
             }
           />

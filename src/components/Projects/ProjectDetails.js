@@ -1,17 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Container, Row, Col, Card, Badge } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
 import { BsGithub, BsArrowLeft } from "react-icons/bs";
 import Particle from "../Particle";
 
-function ProjectDetails({ webProjectsData, dataScienceProjects }) {
+function ProjectDetails({ webProjectsData, dataScienceProjects, mobileProjectsData }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const allProjects = [...(webProjectsData || []), ...(dataScienceProjects || [])];
+  const allProjects = [
+    ...(webProjectsData || []),
+    ...(dataScienceProjects || []),
+    ...(mobileProjectsData || [])
+  ];
+
   const project = allProjects.find((p) => p.id.toString() === id.toString());
 
   if (!project) {
@@ -27,7 +32,6 @@ function ProjectDetails({ webProjectsData, dataScienceProjects }) {
           >
             <BsArrowLeft /> Back to Projects
           </Button>
-
         </div>
       </Container>
     );
@@ -46,7 +50,6 @@ function ProjectDetails({ webProjectsData, dataScienceProjects }) {
           >
             <BsArrowLeft /> Back to Projects
           </Button>
-
         </div>
 
         <Row className="mt-4">
@@ -98,6 +101,62 @@ function ProjectDetails({ webProjectsData, dataScienceProjects }) {
                 )}
               </ul>
             </div>
+
+            {/* Media Gallery Section (for screenshots and recordings) */}
+            {project.media && project.media.length > 0 && (
+              <div className="mb-5">
+                <h3 style={{ color: "white" }}>
+                  Media <span style={{ color: "#64ffda" }}>Gallery</span>
+                </h3>
+
+                <Row className="mt-4">
+                  {project.media.map((item, index) => (
+                    <Col md={6} lg={4} key={index} className="mb-4">
+                      <Card bg="dark" className="h-100 media-item">
+                        <Card.Body>
+                          {item.type === "screenshot" ? (
+                            <div>
+                              <div style={{
+                                borderRadius: "8px",
+                                overflow: "hidden",
+                                marginBottom: "10px"
+                              }}>
+                                <img
+                                  src={item.path}
+                                  alt={item.caption}
+                                  style={{ width: "100%", objectFit: "cover" }}
+                                />
+                              </div>
+                              <p style={{ color: "white", textAlign: "center", marginBottom: "0" }}>{item.caption}</p>
+                            </div>
+                          ) : item.type === "video" ? (
+                            <div>
+                              <div style={{
+                                borderRadius: "8px",
+                                overflow: "hidden",
+                                marginBottom: "10px",
+                                position: "relative"
+                              }} className="video-container">
+                                <video
+                                  controls
+                                  poster={item.thumbnail}
+                                  style={{ width: "100%" }}
+                                  className="video-thumbnail"
+                                >
+                                  <source src={item.path} type="video/mp4" />
+                                  Your browser does not support the video tag.
+                                </video>
+                              </div>
+                              <p style={{ color: "white", textAlign: "center", marginBottom: "0" }}>{item.caption}</p>
+                            </div>
+                          ) : null}
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  ))}
+                </Row>
+              </div>
+            )}
           </Col>
 
           <Col md={4}>
