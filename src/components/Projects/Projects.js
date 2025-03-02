@@ -2,70 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
+import MobileProjectCard from "./MobileProjectCard"; // Import the new component
 import Particle from "../Particle";
+import "./MobileProjectStyles.css"; // Import our mobile styles
 
 function Projects({ webProjectsData, dataScienceProjects, mobileApplicationsProjects }) {
-  // const webProjectsData = [
-  //   {
-  //     id: "1",
-  //     imgPath: ateneoTrade,
-  //     isBlog: false,
-  //     title: "Ateneo Trade",
-  //     description:
-  //       "Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase. Have features which allows user for realtime messaging, image sharing as well as supports reactions on messages.",
-  //     demoLink: "https://ateneo-trade.vercel.app/",
-  //   },
-  //   {
-  //     id: "2",
-  //     imgPath: managerio,
-  //     isBlog: false,
-  //     title: "Manager.io",
-  //     description: "An HR Management application",
-  //     demoLink: "https://managerio.vercel.app/employees",
-  //   },
-  //   {
-  //     id: "3",
-  //     imgPath: byte,
-  //     isBlog: false,
-  //     title: "BYTE",
-  //     description: "A website for BYTE",
-  //     demoLink: "#",
-  //   },
-  //   {
-  //     id: "4",
-  //     imgPath: brigada,
-  //     isBlog: false,
-  //     title: "Brigada E-skwela",
-  //     description: "An advocacy website for brigada e-skwela",
-  //     demoLink: "https://www.brigadaeskwela.org/",
-  //   },
-  //   {
-  //     id: "5",
-  //     imgPath: digitalEspresso,
-  //     isBlog: false,
-  //     title: "Full Stack Digital Espresso",
-  //     description: "An app for digital espresso, a practice.",
-  //     demoLink: "https://mern-digital-espresso.vercel.app/",
-  //   },
-  //   {
-  //     id: "6",
-  //     imgPath: polydoor,
-  //     isBlog: false,
-  //     title: "Polydoor",
-  //     description: "A catalog website for doors.",
-  //     demoLink: "https://polydoor-philippines.com/",
-  //   },
-  // ];
-  // const dataScienceProjects = [
-  //   {
-  //     id: "20",
-  //     imgPath: stockMarket,
-  //     isBlog: false,
-  //     title: "Lululemon Stock Market Analysis",
-  //     description: "A stock market analysis on stock market.",
-  //     ghLink: "https://github.com/knee-rel/DescriptiveStats_Lululemon",
-  //   },
-  // ];
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -97,7 +38,7 @@ function Projects({ webProjectsData, dataScienceProjects, mobileApplicationsProj
           ))}
         </Row>
 
-        <h3 className="project-heading">
+        <h3 className="project-heading mobile-projects-heading">
           Mobile <strong className="teal">Development</strong>
         </h3>
 
@@ -109,11 +50,11 @@ function Projects({ webProjectsData, dataScienceProjects, mobileApplicationsProj
                 lg={4}
                 md={6}
                 sm={12}
-                className="project-card"
+                className="mobile-project-card"
                 key={index}
               >
                 <Link to={`/project/${project.id}`}>
-                  <ProjectCard {...project} />
+                  <MobileProjectCard {...project} />
                 </Link>
               </Col>
             ))}

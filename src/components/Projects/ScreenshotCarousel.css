@@ -1,0 +1,185 @@
+.screenshots-carousel {
+    margin: 30px 0;
+}
+
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.carousel-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+.carousel-control {
+    background: rgba(100, 255, 218, 0.2);
+    color: #64ffda;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+.carousel-control:hover {
+    background: rgba(100, 255, 218, 0.4);
+    transform: scale(1.1);
+}
+
+.carousel-control.prev {
+    left: 10%;
+}
+
+.carousel-control.next {
+    right: 10%;
+}
+
+.phone-frame-carousel {
+    background-color: #111;
+    border-radius: 36px;
+    padding: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.phone-frame-carousel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 30px;
+    background-color: #111;
+    border-radius: 0 0 16px 16px;
+    left: 30%;
+    z-index: 10;
+}
+
+.phone-screen-carousel {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 9/19.5;
+    border: 1px solid #444;
+}
+
+.phone-screenshot-carousel {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1rem;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.carousel-indicator {
+    background: transparent;
+    border: none;
+    color: rgba(100, 255, 218, 0.3);
+    font-size: 10px;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+    color: #64ffda;
+    transform: scale(1.2);
+}
+
+.carousel-thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.thumbnail-col {
+    padding: 0 5px;
+    margin-bottom: 10px;
+}
+
+.thumbnail-card {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px;
+}
+
+.thumbnail-card.active {
+    background: rgba(100, 255, 218, 0.1);
+    border-radius: 10px;
+    transform: translateY(-5px);
+}
+
+.phone-frame-thumbnail {
+    background-color: #111;
+    border-radius: 12px;
+    padding: 4px;
+    border: 1px solid #333;
+    max-width: 70px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.phone-frame-thumbnail::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 8px;
+    background-color: #111;
+    border-radius: 0 0 4px 4px;
+    left: 30%;
+    z-index: 2;
+}
+
+.phone-screen-thumbnail {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 9/19.5;
+    border: 1px solid #444;
+}
+
+.phone-screenshot-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .carousel-control.prev {
+        left: 5%;
+    }
+
+    .carousel-control.next {
+        right: 5%;
+    }
+
+    .phone-frame-carousel {
+        max-width: 250px;
+    }
+}

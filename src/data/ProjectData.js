@@ -5,6 +5,7 @@ import polydoor from '../Assets/Portfolio/polydoor.png'
 import digitalEspresso from '../Assets/Portfolio/digitalEspresso.png'
 import stockMarket from '../Assets/Portfolio/stockMarket.png'
 import brigada from '../Assets/Portfolio/brigada.png'
+import beevrgoMap from '../Assets/beevrgo/beevrgo_map.png'
 
 export const webProjectsData = [
     {
@@ -113,20 +114,45 @@ export const webProjectsData = [
 export const mobileApplicationsProjects = [
     {
         id: "51",
-        imgPath: brigada,
+        imgPath: beevrgoMap,
         isBlog: false,
-        title: "Brigada E-skwela",
-        description: "A comprehensive website for BYTE organization showcasing their services, team members, and achievements. Features a modern design with interactive elements.",
+        title: "beEVrgo",
+        description: "An eletronic vehicle charger booking app for clients based in Canada.",
         demoLink: "#",
         ghLink: "https://github.com/yourusername/byte",
         features: [
-            "Responsive design",
-            "Team showcase",
-            "Project portfolio",
-            "Contact form"
+            "Full-Stack",
+            "Real-Time Booking App",
         ],
         status: "Completed",
-        timeline: "Started: Sept 2021, Released: Oct 2021"
+        timeline: "Started: Jul 2024, Completed: Feb 2025",
+        media: [
+            {
+                type: "screenshot",
+                path: beevrgoMap,
+                caption: "Main map view showing charger locations"
+            },
+            {
+                type: "screenshot",
+                path: beevrgoMap, // Replace with actual screenshot
+                caption: "Charger details screen"
+            },
+            {
+                type: "screenshot",
+                path: beevrgoMap, // Replace with actual screenshot
+                caption: "Settings and preferences"
+            },
+            {
+                type: "screenshot",
+                path: beevrgoMap, // Replace with actual screenshot
+                caption: "Settings and preferences"
+            },
+            {
+                type: "screenshot",
+                path: beevrgoMap, // Replace with actual screenshot
+                caption: "Settings and preferences"
+            },
+        ]
     }
 ]
 

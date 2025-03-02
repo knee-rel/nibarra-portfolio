@@ -1,0 +1,141 @@
+/* Mobile Project Display Styles */
+.phone-frame {
+    background-color: #111;
+    border-radius: 36px;
+    padding: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.phone-frame::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 30px;
+    background-color: #111;
+    border-radius: 0 0 16px 16px;
+    left: 30%;
+    z-index: 10;
+}
+
+.phone-screen {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 9/19.5;
+    border: 1px solid #444;
+}
+
+.phone-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Smaller phone frames for the gallery */
+.phone-frame-small {
+    background-color: #111;
+    border-radius: 24px;
+    padding: 8px;
+    border: 1px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    max-width: 160px;
+    position: relative;
+}
+
+.phone-frame-small::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 20px;
+    background-color: #111;
+    border-radius: 0 0 10px 10px;
+    left: 30%;
+    z-index: 10;
+}
+
+.phone-screen-small {
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 9/19.5;
+    border: 1px solid #444;
+}
+
+.phone-screenshot-small {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mobile-screen-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Carousel controls for mobile screenshots */
+.mobile-carousel-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.mobile-carousel-dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(100, 255, 218, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mobile-carousel-dot.active {
+    background-color: #64ffda;
+}
+
+/* Mobile device selection tabs */
+.device-selection-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.device-tab {
+    padding: 8px 16px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.device-tab:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.device-tab:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.device-tab.active {
+    background-color: rgba(100, 255, 218, 0.2);
+    color: #64ffda;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .phone-frame {
+        max-width: 260px;
+    }
+
+    .phone-frame-small {
+        max-width: 120px;
+    }
+}

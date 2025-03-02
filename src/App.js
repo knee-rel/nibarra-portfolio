@@ -38,7 +38,11 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/project" element={<Projects webProjectsData={webProjectsData} dataScienceProjects={dataScienceProjects} mobileApplicationsProjects={mobileApplicationsProjects} />} />
+          <Route path="/project" element={<Projects
+            webProjectsData={webProjectsData}
+            dataScienceProjects={dataScienceProjects}
+            mobileApplicationsProjects={mobileApplicationsProjects}
+          />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
           <Route
@@ -47,7 +51,7 @@ function App() {
               <ProjectDetails
                 webProjectsData={webProjectsData}
                 dataScienceProjects={dataScienceProjects}
-                mobileApplicationsProjects={mobileApplicationsProjects}
+                mobileProjectsData={mobileApplicationsProjects} // Fix the prop name to match what ProjectDetails expects
               />
             }
           />
