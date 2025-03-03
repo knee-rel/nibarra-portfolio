@@ -1,0 +1,214 @@
+/* Consistent Phone Frame Styles 
+   This ensures Videos and Screenshots tabs have identical phone frames */
+
+/* Base phone frame - the outer container */
+.consistent-phone-frame {
+    background-color: #111;
+    border-radius: 36px;
+    padding: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* iPhone notch */
+.consistent-phone-frame::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 30px;
+    background-color: #111;
+    border-radius: 0 0 16px 16px;
+    left: 30%;
+    z-index: 10;
+}
+
+/* Phone screen - matches the white iPhone screen border */
+.consistent-phone-screen {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 9/19.5;
+    border: 1px solid #444;
+    background-color: #fff;
+    /* White background for screen */
+}
+
+/* Content inside phone can be either image or iframe */
+.consistent-phone-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Caption styling */
+.consistent-caption {
+    color: white;
+    margin-top: 15px;
+    text-align: center;
+    padding: 0 15px;
+}
+
+/* Carousel controls wrapper */
+.consistent-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+/* Arrow controls */
+.consistent-carousel-control {
+    background: rgba(100, 255, 218, 0.2);
+    color: #64ffda;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+.consistent-carousel-control:hover {
+    background: rgba(100, 255, 218, 0.4);
+    transform: scale(1.1);
+}
+
+.consistent-carousel-control.prev {
+    left: 5%;
+}
+
+.consistent-carousel-control.next {
+    right: 5%;
+}
+
+/* Carousel dots indicators */
+.consistent-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.consistent-carousel-indicator {
+    background: transparent;
+    border: none;
+    color: rgba(100, 255, 218, 0.3);
+    font-size: 10px;
+    padding: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.consistent-carousel-indicator.active {
+    color: #64ffda;
+    transform: scale(1.2);
+}
+
+/* Thumbnails row at bottom */
+.consistent-thumbnails {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.consistent-thumbnail {
+    padding: 3px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.consistent-thumbnail.active {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-3px);
+}
+
+.consistent-phone-frame-mini {
+    background-color: #111;
+    border-radius: 12px;
+    padding: 4px;
+    border: 1px solid #333;
+    max-width: 70px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.consistent-phone-frame-mini::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 8px;
+    background-color: #111;
+    border-radius: 0 0 4px 4px;
+    left: 30%;
+    z-index: 2;
+}
+
+.consistent-phone-screen-mini {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 9/19.5;
+    border: 1px solid #444;
+    background-color: #fff;
+    /* White background for mini screens too */
+}
+
+.consistent-phone-content-mini {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Video-specific styles */
+.consistent-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .consistent-phone-frame {
+        max-width: 260px;
+    }
+
+    .consistent-carousel-control.prev {
+        left: 0;
+    }
+
+    .consistent-carousel-control.next {
+        right: 0;
+    }
+
+    .consistent-phone-frame-mini {
+        max-width: 50px;
+    }
+}

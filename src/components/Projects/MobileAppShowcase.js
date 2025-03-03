@@ -7,14 +7,14 @@ import {
     BsChevronLeft,
     BsChevronRight,
     BsCircleFill,
-    BsGithub,
-    BsCloudDownload,
     BsCodeSquare,
     BsArrowRight
 } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
 import VideoPlayer from "./VideoPlayer";
+import VideoCarousel from './VideoCarousel'
 import "./MobileAppShowcase.css";
+import "./ConsistentPhoneFrame.css"; // Import the consistent styles
 
 const MobileAppShowcase = ({ project }) => {
     const [activeTab, setActiveTab] = useState("screenshots");
@@ -81,43 +81,43 @@ const MobileAppShowcase = ({ project }) => {
                             </h3>
 
                             <div className="d-flex flex-column align-items-center">
-                                {/* Main Phone Display with Carousel Controls */}
-                                <div className="carousel-main">
+                                {/* Main Phone Display with Carousel Controls - Using Consistent Phone Frame */}
+                                <div className="consistent-carousel-wrapper">
                                     {project.media && project.media.length > 1 && (
-                                        <button className="carousel-control prev" onClick={handlePrevSlide}>
+                                        <button className="consistent-carousel-control prev" onClick={handlePrevSlide}>
                                             <BsChevronLeft />
                                         </button>
                                     )}
 
-                                    <div className="phone-frame">
-                                        <div className="phone-screen">
+                                    <div className="consistent-phone-frame">
+                                        <div className="consistent-phone-screen">
                                             <img
                                                 src={project.media ? project.media[activeSlide].path : project.imgPath}
                                                 alt={project.title}
-                                                className="phone-screenshot"
+                                                className="consistent-phone-content"
                                             />
                                         </div>
                                     </div>
 
                                     {project.media && project.media.length > 1 && (
-                                        <button className="carousel-control next" onClick={handleNextSlide}>
+                                        <button className="consistent-carousel-control next" onClick={handleNextSlide}>
                                             <BsChevronRight />
                                         </button>
                                     )}
                                 </div>
 
                                 {/* Caption below main image */}
-                                <p className="screenshot-caption">
+                                <p className="consistent-caption">
                                     {project.media ? project.media[activeSlide].caption : "Main app view"}
                                 </p>
 
-                                {/* Thumbnail indicators */}
+                                {/* Dots indicators */}
                                 {project.media && project.media.length > 0 && (
-                                    <div className="carousel-indicators">
+                                    <div className="consistent-carousel-indicators">
                                         {project.media.map((item, index) => (
                                             <button
                                                 key={index}
-                                                className={`carousel-indicator ${index === activeSlide ? "active" : ""}`}
+                                                className={`consistent-carousel-indicator ${index === activeSlide ? "active" : ""}`}
                                                 onClick={() => setActiveSlide(index)}
                                                 aria-label={`Go to slide ${index + 1}`}
                                             >
@@ -129,26 +129,25 @@ const MobileAppShowcase = ({ project }) => {
 
                                 {/* Thumbnail gallery */}
                                 {project.media && project.media.length > 0 && (
-                                    <Row className="carousel-thumbnails">
+                                    <div className="consistent-thumbnails">
                                         {project.media.map((item, index) => (
-                                            <Col xs={4} md={2} key={index} className="thumbnail-col">
-                                                <Card
-                                                    className={`thumbnail-card ${index === activeSlide ? "active" : ""}`}
-                                                    onClick={() => setActiveSlide(index)}
-                                                >
-                                                    <div className="phone-frame-thumbnail">
-                                                        <div className="phone-screen-thumbnail">
-                                                            <img
-                                                                src={item.path}
-                                                                alt={`Thumbnail ${index + 1}`}
-                                                                className="phone-screenshot-thumbnail"
-                                                            />
-                                                        </div>
+                                            <div 
+                                                key={index} 
+                                                className={`consistent-thumbnail ${index === activeSlide ? "active" : ""}`}
+                                                onClick={() => setActiveSlide(index)}
+                                            >
+                                                <div className="consistent-phone-frame-mini">
+                                                    <div className="consistent-phone-screen-mini">
+                                                        <img
+                                                            src={item.path}
+                                                            alt={`Thumbnail ${index + 1}`}
+                                                            className="consistent-phone-content-mini"
+                                                        />
                                                     </div>
-                                                </Card>
-                                            </Col>
+                                                </div>
+                                            </div>
                                         ))}
-                                    </Row>
+                                    </div>
                                 )}
                             </div>
                         </div>
@@ -156,13 +155,14 @@ const MobileAppShowcase = ({ project }) => {
 
                     {activeTab === "videos" && (
                         <div className="videos-section">
-                            <h3 className="section-title">
-                                App <span className="highlight">Demonstrations</span>
-                            </h3>
-
-                            {/* Main demo video */}
-                            {project.demoVideo ? (
+                            {/* Use VideoCarousel if videos are available */}
+                            {project.videos && project.videos.length > 0 ? (
+                                <VideoCarousel videos={project.videos} />
+                            ) : project.demoVideo ? (
                                 <div className="video-container">
+                                    <h3 className="section-title">
+                                        App <span className="highlight">Demonstrations</span>
+                                    </h3>
                                     <VideoPlayer
                                         videoId={project.demoVideo}
                                         title={`${project.title} Demo`}
@@ -171,12 +171,15 @@ const MobileAppShowcase = ({ project }) => {
                                 </div>
                             ) : (
                                 <div className="text-center p-4">
+                                    <h3 className="section-title">
+                                        App <span className="highlight">Demonstrations</span>
+                                    </h3>
                                     <p className="text-white">No demo videos available yet.</p>
                                 </div>
                             )}
 
-                            {/* Additional videos */}
-                            {project.additionalVideos && project.additionalVideos.length > 0 && (
+                            {/* Additional videos section (if needed for backward compatibility) */}
+                            {!project.videos && project.additionalVideos && project.additionalVideos.length > 0 && (
                                 <div className="additional-videos">
                                     <h4 className="subsection-title">Feature Walkthroughs</h4>
 
@@ -202,7 +205,7 @@ const MobileAppShowcase = ({ project }) => {
                                 Project <span className="highlight">Details</span>
                             </h3>
 
-                            {/* Extended Project Description */}
+                            {/* Info tab content remains unchanged */}
                             <div className="info-block">
                                 <h4 className="info-subtitle">Project Overview</h4>
                                 <p className="info-text">{project.extendedDescription || project.description}</p>
@@ -229,6 +232,7 @@ const MobileAppShowcase = ({ project }) => {
                                 )}
                             </div>
 
+                            {/* Rest of the info tab content... */}
                             {/* Development Process */}
                             {(project.developmentProcess || project.challenges || project.teamContribution) && (
                                 <div className="info-block mt-5">
@@ -257,7 +261,7 @@ const MobileAppShowcase = ({ project }) => {
                                 </div>
                             )}
 
-                            {/* Technical Architecture */}
+                            {/* Technical Architecture section */}
                             {(project.technicalArchitecture || project.technicalDecisions || project.databaseStructure || project.apiIntegrations) && (
                                 <div className="info-block mt-5">
                                     <h4 className="info-subtitle">Technical Architecture</h4>

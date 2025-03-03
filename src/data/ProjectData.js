@@ -10,6 +10,11 @@ import beevrgoMap2 from '../Assets/beevrgo/beevrgo_map_2.png'
 import beevrgoMap3 from '../Assets/beevrgo/beevrgo_map_3.png'
 import beevrgoSettings from '../Assets/beevrgo/beevrgo_settings.png'
 import beevrgoReservations from '../Assets/beevrgo/beevrgo_reservations.png'
+import bossHome from '../Assets/boss_app/boss_home.png'
+import bossHome2 from '../Assets/boss_app/boss_home_2.png'
+import bossCampaigns from '../Assets/boss_app/boss_campaigns.png'
+import bossSettlements from '../Assets/boss_app/boss_settlement.png'
+import bossInbox from '../Assets/boss_app/boss_inbox.png'
 
 export const webProjectsData = [
     {
@@ -135,8 +140,8 @@ export const mobileApplicationsProjects = [
         demoLink: "#",
         demoVideo: 'https://drive.google.com/file/d/10mFUtN9t6EowROe47AZ7Ts8N8iNSb_JO/view?usp=sharing',
         videos: [
-            { id: "https://drive.google.com/file/d/10mFUtN9t6EowROe47AZ7Ts8N8iNSb_JO/view?usp=sharing", title: "Feature Walkthrough" },
-            { id: "https://drive.google.com/file/d/10mFUtN9t6EowROe47AZ7Ts8N8iNSb_JO/view?usp=sharing", title: "User Tutorial" }
+            { id: "https://drive.google.com/file/d/1-QO8Y-Tnr7At4TM1c_525xKmOHeNtWdz/view?usp=drive_link", title: "Registration Demo" },
+            { id: "https://drive.google.com/file/d/17d4LFYRtSjq5HTjh46yYkCFbLEXR1zO-/view?usp=drive_link", title: "Booking Demo" }
         ],
         ghLink: "https://github.com/yourusername/byte",
         tools: [
@@ -150,33 +155,6 @@ export const mobileApplicationsProjects = [
             "Full-Stack",
             "Real-Time Booking App",
         ],
-        // detailedFeatures: [
-        //     {
-        //         name: "Interactive Charger Map",
-        //         description: "Real-time map showing charger locations, availability, and detailed information including compatible connectors and charging speeds.",
-        //         technicalDetails: "Implemented using Mapbox GL with custom markers, clusters for improved performance, and geospatial queries for relevant data loading."
-        //     },
-        //     {
-        //         name: "Smart Reservation System",
-        //         description: "Allows users to book charging slots in advance, with intelligent time slot suggestions based on typical charging duration for their vehicle model.",
-        //         technicalDetails: "Uses a custom-built scheduling algorithm that accounts for charging speed, vehicle battery capacity, and historical usage patterns."
-        //     },
-        //     {
-        //         name: "Unified Payment Processing",
-        //         description: "Single payment system that works across multiple charging networks, with support for saved payment methods and digital receipts.",
-        //         technicalDetails: "Integrates with Stripe for payment processing, implementing a secure token-based system to authorize charges across partner networks."
-        //     },
-        //     {
-        //         name: "Trip Planner",
-        //         description: "Plan long journeys with optimal charging stops based on your vehicle's range, preferred charging networks, and amenities preferences.",
-        //         technicalDetails: "Combines mapping APIs with a proprietary routing algorithm that considers battery range, elevation changes, and real-time charger availability."
-        //     },
-        //     {
-        //         name: "Offline Mode",
-        //         description: "Access previously viewed charger information and reservations even without internet connectivity, crucial for remote areas.",
-        //         technicalDetails: "Implements sophisticated local storage management with data synchronization when connectivity is restored."
-        //     }
-        // ],
         status: "Completed",
         timeline: "Started: Jul 2024, Completed: Feb 2025",
         teamSize: "3 team members",
@@ -207,7 +185,67 @@ export const mobileApplicationsProjects = [
                 caption: "Settings and preferences"
             },
         ]
-    }
+    },
+    {
+        id: "52",
+        imgPath: bossHome,
+        isBlog: false,
+        title: "Boss App",
+        description: "Helping store owners of sari-sari stores to keep track of their sales, settlements, and ongoing promos.",
+        extendedDescription: "This app provides store owners a convenient way of viewing their performance.",
+        problemStatement: "The other app, Superstore, contains too much functionality. Multiple users access the said platform, hence the importance of separating features for security purposes.",
+        solution: "Consolidates all information relevant to the store-owner, while providing limited access to true users only.",
+        targetAudience: "Store-owners, specifically those with ",
+        developmentProcess: "The project followed an agile approach, with consistent development and revisions ongoing.",
+        teamContribution: "The project was developed by a team of five, including two mobile developers, two backend developers, and one project manager. I served as a mobile developer.",
+        technicalArchitecture: "The app is built with Flutter for the frontend, with a FastAPI backend. ",
+        technicalDecisions: "We chose Flutter over native development to accelerate delivery for both iOS and Android platforms. ",
+        // apiIntegrations: "The app integrates with various EV charging networks (ChargePoint, FLO, Tesla Supercharger network), mapping services (Google Maps), and authentication providers.",
+        demoLink: "#",
+        demoVideo: 'https://drive.google.com/file/d/17d4LFYRtSjq5HTjh46yYkCFbLEXR1zO-/view?usp=drive_link',
+        videos: [
+            { id: "https://drive.google.com/file/d/17d4LFYRtSjq5HTjh46yYkCFbLEXR1zO-/view?usp=drive_link", title: "Main App Demo" },
+        ],
+        ghLink: "https://github.com/yourusername/byte",
+        tools: [
+            "Flutter",
+            "FastAPI",
+        ],
+        features: [
+            "Store Management App",
+            "Full-Stack",
+        ],
+        status: "Ongoing",
+        timeline: "Started: Jan 2025",
+        teamSize: "3 team members",
+        media: [
+            {
+                type: "screenshot",
+                path: bossHome,
+                caption: "Home screen (top view)"
+            },
+            {
+                type: "screenshot",
+                path: bossHome2,
+                caption: "Home screen (bottom view)"
+            },
+            {
+                type: "screenshot",
+                path: bossCampaigns,
+                caption: "Campaigns available for the user to join"
+            },
+            {
+                type: "screenshot",
+                path: bossSettlements,
+                caption: "List of settlements received/to be received"
+            },
+            {
+                type: "screenshot",
+                path: bossInbox,
+                caption: "In-app notifications"
+            },
+        ]
+    },
 ]
 
 export const dataScienceProjects = [

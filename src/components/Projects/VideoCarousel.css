@@ -1,0 +1,242 @@
+.videos-carousel {
+    margin: 30px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    color: white;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.highlight {
+    color: #64ffda;
+}
+
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    max-width: 450px;
+    width: 100%;
+}
+
+.carousel-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    padding: 0 25px;
+}
+
+/* iPhone mockup for video player */
+.phone-frame-video {
+    background-color: #000;
+    border-radius: 40px;
+    padding: 5px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    max-width: 270px;
+    margin: 0 auto;
+    position: relative;
+    border: 1px solid rgba(100, 100, 100, 0.3);
+}
+
+/* iPhone notch */
+.phone-frame-video::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 25px;
+    background-color: #000;
+    border-radius: 0 0 20px 20px;
+    left: 25%;
+    z-index: 10;
+}
+
+
+.phone-screen-video {
+    border-radius: 35px;
+    overflow: hidden;
+    aspect-ratio: 9/19;
+    position: relative;
+    background-color: #000;
+    border: none;
+}
+
+.video-player {
+    border: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #000;
+}
+
+/* Video caption */
+.carousel-caption {
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    width: 100%;
+    padding: 0 15px;
+}
+
+/* Arrow controls */
+.carousel-control {
+    background: rgba(100, 255, 218, 0.2);
+    color: #64ffda;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+.carousel-control:hover {
+    background: rgba(100, 255, 218, 0.4);
+    transform: scale(1.1);
+}
+
+.carousel-control.prev {
+    left: -15px;
+}
+
+.carousel-control.next {
+    right: -15px;
+}
+
+/* Video indicator dots */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 15px;
+}
+
+.carousel-indicator {
+    background: transparent;
+    border: none;
+    color: rgba(100, 255, 218, 0.3);
+    font-size: 10px;
+    padding: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.carousel-indicator.active {
+    color: #64ffda;
+    transform: scale(1.2);
+}
+
+/* Video controls */
+.video-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.control-button {
+    background-color: rgba(100, 255, 218, 0.1);
+    border: none;
+    color: #64ffda;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.control-button:hover {
+    background-color: rgba(100, 255, 218, 0.3);
+    transform: scale(1.1);
+}
+
+/* Thumbnail navigation */
+.thumbnail-navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 15px;
+}
+
+.thumbnail-button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+}
+
+.thumbnail-button.active {
+    opacity: 1;
+    background-color: rgba(100, 255, 218, 0.1);
+}
+
+.thumbnail-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(100, 255, 218, 0.5);
+}
+
+.thumbnail-button.active .thumbnail-indicator {
+    background-color: #64ffda;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .carousel-main {
+        padding: 0 15px;
+    }
+
+    .carousel-control {
+        width: 32px;
+        height: 32px;
+    }
+
+    .carousel-control.prev {
+        left: -10px;
+    }
+
+    .carousel-control.next {
+        right: -10px;
+    }
+
+    .phone-frame-video {
+        max-width: 220px;
+    }
+
+    .carousel-caption {
+        font-size: 0.9rem;
+        margin: 20px 0 10px;
+    }
+
+    .control-button {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+}
