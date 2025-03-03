@@ -74,8 +74,8 @@ const VideoCarousel = ({ videos }) => {
                         <div className="consistent-phone-screen">
                             <iframe
                                 src={getEmbedUrl(videos[activeIndex].id)}
-                                width="100%"
-                                height="100%"
+                                // width="100%"
+                                // height="100%"
                                 allow="autoplay; encrypted-media; picture-in-picture"
                                 allowFullScreen
                                 title={videos[activeIndex].title || "Video player"}
@@ -117,7 +117,7 @@ const VideoCarousel = ({ videos }) => {
                 {videos.length > 1 && (
                     <div className="consistent-thumbnails">
                         {videos.map((video, index) => (
-                            <div 
+                            <div
                                 key={index}
                                 className={`consistent-thumbnail ${index === activeIndex ? "active" : ""}`}
                                 onClick={() => setActiveIndex(index)}
@@ -125,12 +125,12 @@ const VideoCarousel = ({ videos }) => {
                                 <div className="consistent-phone-frame-mini">
                                     <div className="consistent-phone-screen-mini">
                                         {/* We can't show actual video thumbnails, so we'll use a placeholder */}
-                                        <div 
+                                        <div
                                             className="consistent-phone-content-mini"
-                                            style={{ 
-                                                backgroundColor: "#f1f1f1", 
-                                                height: "100%", 
-                                                position: "relative" 
+                                            style={{
+                                                backgroundColor: "#f1f1f1",
+                                                height: "100%",
+                                                position: "relative"
                                             }}
                                         >
                                             <div className="consistent-play-icon">

@@ -38,11 +38,19 @@ const VideoPlayer = ({ videoId, title, isMobileAppDemo = false }) => {
                 <div className={isMobileAppDemo ? "video-responsive-mobile" : "video-responsive"}>
                     <iframe
                         src={getEmbedUrl(videoId)}
-                        width="100%"
-                        height="100%"
+                        frameBorder="0"
                         allow="autoplay; encrypted-media; picture-in-picture"
                         allowFullScreen
                         title={title || "Project Demo"}
+                        style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            border: 'none',
+                            borderRadius: isMobileAppDemo ? '24px' : '0'
+                        }}
                     ></iframe>
                 </div>
             </Card.Body>
