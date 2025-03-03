@@ -22,6 +22,7 @@
     padding: 0 !important;
 }
 
+/* Standard 16:9 aspect ratio for regular videos */
 .video-responsive {
     position: relative;
     overflow: hidden;
@@ -30,7 +31,40 @@
     /* 16:9 Aspect Ratio */
 }
 
-.video-responsive iframe {
+/* Mobile phone aspect ratio container (typically 9:19.5 for modern phones) */
+.video-responsive-mobile {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 375px;
+    /* Typical phone width */
+    padding-top: 216.7%;
+    /* 9:19.5 aspect ratio */
+    margin: 0 auto;
+    /* Center the container */
+    background-color: #111;
+    /* Dark background */
+    border-radius: 36px;
+    /* Rounded corners like a phone */
+    border: 12px solid #111;
+    /* Phone frame */
+}
+
+/* Add phone notch */
+.video-responsive-mobile::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 30px;
+    background-color: #111;
+    border-radius: 0 0 16px 16px;
+    left: 30%;
+    z-index: 10;
+}
+
+.video-responsive iframe,
+.video-responsive-mobile iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -41,8 +75,26 @@
     border: none;
 }
 
+.video-responsive-mobile iframe {
+    border-radius: 24px;
+    /* Rounded corners for the screen inside the frame */
+}
+
+/* Improved responsive styles */
 @media (max-width: 768px) {
     .video-card {
         margin-bottom: 20px;
+    }
+
+    .video-responsive-mobile {
+        max-width: 300px;
+        /* Smaller on mobile devices */
+        border-width: 8px;
+        /* Thinner border on mobile */
+    }
+
+    .video-responsive-mobile::before {
+        height: 20px;
+        /* Smaller notch on mobile */
     }
 }

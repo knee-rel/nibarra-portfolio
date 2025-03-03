@@ -1,22 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { Container, Row, Col, Card, Badge } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import { BsGithub, BsArrowLeft } from "react-icons/bs";
 import { CgWebsite } from "react-icons/cg";
-import { BsGithub, BsArrowLeft, BsCircleFill, BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import Particle from "../Particle";
 import VideoPlayer from "./VideoPlayer";
 import ProjectFeatures from "./ProjectFeatures";
+import MobileAppShowcase from "./MobileAppShowcase"; // Import the new component
+import "./ProjectDetails.css";
 import "./MobileProjectStyles.css";
 import "./MobileProjectDisplay.css";
 
 function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicationsProjects }) {
   const { id } = useParams();
   const navigate = useNavigate();
-
-  // State to track active carousel slide
-  const [activeSlide, setActiveSlide] = React.useState(0);
 
   const allProjects = [
     ...(webProjectsData || []),
@@ -47,21 +46,6 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
   // Determine if this is a mobile app project by checking the ID
   const isMobileProject = project.id.toString().startsWith("5");
 
-  // Handler functions for carousel
-  const handlePrevSlide = () => {
-    setActiveSlide(prev => {
-      if (prev === 0) return (project.media?.length || 1) - 1;
-      return prev - 1;
-    });
-  };
-
-  const handleNextSlide = () => {
-    setActiveSlide(prev => {
-      if (prev === (project.media?.length || 1) - 1) return 0;
-      return prev + 1;
-    });
-  };
-
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -83,100 +67,10 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
           <Col lg={8}>
             {/* Main content area */}
             {isMobileProject ? (
-              <>
-                {/* Mobile App Preview */}
-                <div className="mb-5">
-                  <h3 style={{ color: "white", marginBottom: "20px", textAlign: "center" }}>
-                    App <span style={{ color: "#64ffda" }}>Preview</span>
-                  </h3>
-
-                  <div className="d-flex flex-column align-items-center">
-                    {/* Main Phone Display with Carousel Controls */}
-                    <div className="carousel-main">
-                      {project.media && project.media.length > 1 && (
-                        <button className="carousel-control prev" onClick={handlePrevSlide}>
-                          <BsChevronLeft />
-                        </button>
-                      )}
-
-                      <div className="phone-frame">
-                        <div className="phone-screen">
-                          <img
-                            src={project.media ? project.media[activeSlide].path : project.imgPath}
-                            alt={project.title}
-                            className="phone-screenshot"
-                          />
-                        </div>
-                      </div>
-
-                      {project.media && project.media.length > 1 && (
-                        <button className="carousel-control next" onClick={handleNextSlide}>
-                          <BsChevronRight />
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Caption below main image */}
-                    <p style={{ color: "white", marginTop: "15px", textAlign: "center" }}>
-                      {project.media ? project.media[activeSlide].caption : "Main map view showing charger locations"}
-                    </p>
-
-                    {/* Thumbnail indicators */}
-                    {project.media && project.media.length > 0 && (
-                      <div className="thumbnail-navigation">
-                        <Row className="mt-2 justify-content-center">
-                          {project.media.map((item, index) => (
-                            <Col xs={2} key={index} className="px-1 thumbnail-col">
-                              <div
-                                className={`thumbnail-indicator ${index === activeSlide ? "active" : ""}`}
-                                onClick={() => setActiveSlide(index)}
-                              >
-                                <BsCircleFill size={10} />
-                              </div>
-                            </Col>
-                          ))}
-                        </Row>
-                      </div>
-                    )}
-
-                    {/* Thumbnail gallery */}
-                    {project.media && project.media.length > 0 && (
-                      <Row className="mt-4 justify-content-center">
-                        {project.media.map((item, index) => (
-                          <Col xs={4} md={2} key={index} className="mb-3">
-                            <div
-                              className={`thumbnail-container ${index === activeSlide ? "active" : ""}`}
-                              onClick={() => setActiveSlide(index)}
-                            >
-                              <div className="phone-frame-small">
-                                <div className="phone-screen-small">
-                                  <img
-                                    src={item.path}
-                                    alt={item.caption}
-                                    className="phone-screenshot-small"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </Col>
-                        ))}
-                      </Row>
-                    )}
-                  </div>
-                </div>
-
-                {/* Project Demo Video (if available) */}
-                {project.demoVideo && (
-                  <div className="mb-5">
-                    <h3 style={{ color: "white", textAlign: "center" }}>
-                      App <span style={{ color: "#64ffda" }}>Demo</span>
-                    </h3>
-                    <VideoPlayer videoId={project.demoVideo} title={`${project.title} Demo`} />
-                  </div>
-                )}
-              </>
+              /* Use the new MobileAppShowcase component for mobile projects */
+              <MobileAppShowcase project={project} />
             ) : (
-              // Standard project display code (unchanged)
+              // Standard project display code for web projects
               <>
                 {/* Standard Project Screenshot */}
                 <Card className="mb-5" bg="dark">
@@ -250,65 +144,54 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
                     </Row>
                   </div>
                 )}
+
+                {/* Web Project Demo Video (if available) */}
+                {project.demoVideo && (
+                  <div className="mb-5">
+                    <h3 style={{ color: "white", textAlign: "center" }}>
+                      Project <span style={{ color: "#64ffda" }}>Demo</span>
+                    </h3>
+                    <VideoPlayer videoId={project.demoVideo} title={`${project.title} Demo`} />
+                  </div>
+                )}
               </>
             )}
 
-            {/* Project Overview */}
-            <div className="mb-5">
-              <h3 style={{ color: "white", textAlign: "center" }}>
-                Project <span style={{ color: "#64ffda" }}>Overview</span>
-              </h3>
-              <p style={{ color: "white", textAlign: "justify" }}>{project.description}</p>
-            </div>
+            {/* Project Overview - For both mobile and web projects */}
+            {!isMobileProject && (
+              <div className="mb-5">
+                <h3 style={{ color: "white", textAlign: "center" }}>
+                  Project <span style={{ color: "#64ffda" }}>Overview</span>
+                </h3>
+                <p style={{ color: "white", textAlign: "justify" }}>{project.description}</p>
+              </div>
+            )}
 
-            {/* Key Features Section */}
-            <ProjectFeatures features={project.features} />
+            {/* Key Features Section - Only show for web projects as mobile has it in the tabs */}
+            {!isMobileProject && <ProjectFeatures features={project.features} />}
           </Col>
 
           <Col lg={4}>
             <Card bg="dark" className="mb-4">
               <Card.Body>
-                {/* Project Tools */}
-                <div className="mb-4">
-                  <h3 style={{ color: "white" }}>
-                    Tools <span style={{ color: "#64ffda" }}>Used</span>
+                <div className="project-actions mb-4">
+                  <h3 style={{ color: "white", marginBottom: "15px" }}>
+                    Project <span style={{ color: "#64ffda" }}>Links</span>
                   </h3>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "15px" }}>
-                    {project.tools?.map((tool, index) => (
-                      <Badge
-                        key={index}
-                        bg="dark"
-                        style={{
-                          color: "#64ffda",
-                          border: "1px solid #64ffda",
-                          padding: "8px 12px",
-                          borderRadius: "15px"
-                        }}
-                      >
-                        {tool}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Rest of sidebar content - unchanged */}
-                {/* Project Links */}
-                <div className="project-links">
                   {project.ghLink && (
                     <Button
                       variant="primary"
                       href={project.ghLink}
                       target="_blank"
-                      className="w-100 mb-3"
+                      className="w-100 mb-3 d-flex align-items-center justify-content-center"
                       style={{
-                        display: "inline-flex",
-                        alignItems: "center",
                         gap: "0.5rem",
                         backgroundColor: "#623686",
-                        borderColor: "#623686"
+                        borderColor: "#623686",
+                        padding: "10px"
                       }}
                     >
-                      <BsGithub /> View Source Code
+                      <BsGithub size={18} /> View Source Code
                     </Button>
                   )}
                   {project.demoLink && (
@@ -316,74 +199,106 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
                       variant="primary"
                       href={project.demoLink}
                       target="_blank"
-                      className="w-100"
+                      className="w-100 d-flex align-items-center justify-content-center"
                       style={{
-                        display: "inline-flex",
-                        alignItems: "center",
                         gap: "0.5rem",
                         backgroundColor: "#623686",
-                        borderColor: "#623686"
+                        borderColor: "#623686",
+                        padding: "10px"
                       }}
                     >
-                      <CgWebsite /> {isMobileProject ? 'App Store' : 'Live Demo'}
+                      <CgWebsite size={18} /> {isMobileProject ? 'App Store' : 'Live Demo'}
                     </Button>
                   )}
                 </div>
 
-                {/* Project Status */}
-                <div className="mt-4">
-                  <h4 style={{ color: "white" }}>Project Status</h4>
-                  <Badge
-                    bg="dark"
-                    style={{
-                      color: "#64ffda",
-                      backgroundColor: "rgba(100, 255, 218, 0.1)",
-                      padding: "8px 15px",
-                      borderRadius: "15px"
-                    }}
-                  >
-                    {project.status || "Active"}
-                  </Badge>
+                {/* Project Technology Stack - Replace "Tools Used" */}
+                <div className="mb-4">
+                  <h3 style={{ color: "white", marginBottom: "15px" }}>
+                    Tech <span style={{ color: "#64ffda" }}>Stack</span>
+                  </h3>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+                    {project.tools?.map((tool, index) => (
+                      <span
+                        key={index}
+                        style={{
+                          color: "#64ffda",
+                          border: "1px solid #64ffda",
+                          padding: "8px 12px",
+                          borderRadius: "15px",
+                          display: "inline-block",
+                          backgroundColor: "rgba(30, 30, 30, 0.8)"
+                        }}
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Project Timeline */}
-                {project.timeline && (
-                  <div className="mt-4">
-                    <h4 style={{ color: "white" }}>Timeline</h4>
-                    <p style={{ color: "rgba(255, 255, 255, 0.6)" }}>{project.timeline}</p>
-                  </div>
-                )}
+                {/* Project Information Block */}
+                <div className="project-info-block">
+                  <h3 style={{ color: "white", marginBottom: "15px" }}>
+                    Project <span style={{ color: "#64ffda" }}>Details</span>
+                  </h3>
 
-                {/* Mobile-specific information */}
-                {isMobileProject && (
-                  <div className="mt-4">
-                    <h4 style={{ color: "white" }}>Platforms</h4>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "15px" }}>
-                      <Badge
-                        bg="dark"
-                        style={{
-                          color: "#64ffda",
-                          border: "1px solid #64ffda",
-                          padding: "8px 12px",
-                          borderRadius: "15px"
-                        }}
-                      >
-                        iOS
-                      </Badge>
-                      <Badge
-                        bg="dark"
-                        style={{
-                          color: "#64ffda",
-                          border: "1px solid #64ffda",
-                          padding: "8px 12px",
-                          borderRadius: "15px"
-                        }}
-                      >
-                        Android
-                      </Badge>
-                    </div>
+                  {/* Status */}
+                  <div className="info-item mb-3">
+                    <h4 style={{ color: "white", fontSize: "1rem" }}>Status</h4>
+                    <span
+                      style={{
+                        color: "#64ffda",
+                        backgroundColor: "rgba(100, 255, 218, 0.1)",
+                        padding: "6px 12px",
+                        borderRadius: "15px",
+                        display: "inline-block"
+                      }}
+                    >
+                      {project.status || "Active"}
+                    </span>
                   </div>
-                )}
+
+                  {/* Timeline */}
+                  {project.timeline && (
+                    <div className="info-item mb-3">
+                      <h4 style={{ color: "white", fontSize: "1rem" }}>Timeline</h4>
+                      <p style={{ color: "rgba(255, 255, 255, 0.8)" }}>{project.timeline}</p>
+                    </div>
+                  )}
+
+                  {/* Platforms - for mobile apps */}
+                  {isMobileProject && (
+                    <div className="info-item mb-3">
+                      <h4 style={{ color: "white", fontSize: "1rem" }}>Platforms</h4>
+                      <div style={{ display: "flex", gap: "10px" }}>
+                        <span
+                          style={{
+                            color: "#64ffda",
+                            border: "1px solid #64ffda",
+                            padding: "6px 12px",
+                            borderRadius: "15px",
+                            display: "inline-block",
+                            backgroundColor: "rgba(30, 30, 30, 0.8)"
+                          }}
+                        >
+                          iOS
+                        </span>
+                        <span
+                          style={{
+                            color: "#64ffda",
+                            border: "1px solid #64ffda",
+                            padding: "6px 12px",
+                            borderRadius: "15px",
+                            display: "inline-block",
+                            backgroundColor: "rgba(30, 30, 30, 0.8)"
+                          }}
+                        >
+                          Android
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </Card.Body>
             </Card>
           </Col>

@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import "./VideoPlayer.css";
 
-const VideoPlayer = ({ videoId, title }) => {
+const VideoPlayer = ({ videoId, title, isMobileAppDemo = false }) => {
     // Convert Google Drive link to embed format
     const getEmbedUrl = (driveId) => {
         // Handle different Google Drive URL formats
@@ -34,11 +34,12 @@ const VideoPlayer = ({ videoId, title }) => {
                 <h5>{title || "Project Demo"}</h5>
             </Card.Header>
             <Card.Body className="video-body">
-                <div className="video-responsive">
+                {/* Apply special container for mobile app demos to maintain phone aspect ratio */}
+                <div className={isMobileAppDemo ? "video-responsive-mobile" : "video-responsive"}>
                     <iframe
                         src={getEmbedUrl(videoId)}
                         width="100%"
-                        height="480"
+                        height="100%"
                         allow="autoplay; encrypted-media; picture-in-picture"
                         allowFullScreen
                         title={title || "Project Demo"}

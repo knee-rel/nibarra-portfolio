@@ -7,6 +7,9 @@ import stockMarket from '../Assets/Portfolio/stockMarket.png'
 import brigada from '../Assets/Portfolio/brigada.png'
 import beevrgoMap from '../Assets/beevrgo/beevrgo_map.png'
 import beevrgoMap2 from '../Assets/beevrgo/beevrgo_map_2.png'
+import beevrgoMap3 from '../Assets/beevrgo/beevrgo_map_3.png'
+import beevrgoSettings from '../Assets/beevrgo/beevrgo_settings.png'
+import beevrgoReservations from '../Assets/beevrgo/beevrgo_reservations.png'
 
 export const webProjectsData = [
     {
@@ -120,6 +123,11 @@ export const mobileApplicationsProjects = [
         title: "beEVrgo",
         description: "An eletronic vehicle charger booking app for clients based in Canada.",
         demoLink: "#",
+        demoVideo: 'https://drive.google.com/file/d/10mFUtN9t6EowROe47AZ7Ts8N8iNSb_JO/view?usp=sharing',
+        videos: [
+            { id: "https://drive.google.com/file/d/10mFUtN9t6EowROe47AZ7Ts8N8iNSb_JO/view?usp=sharing", title: "Feature Walkthrough" },
+            { id: "https://drive.google.com/file/d/10mFUtN9t6EowROe47AZ7Ts8N8iNSb_JO/view?usp=sharing", title: "User Tutorial" }
+        ],
         ghLink: "https://github.com/yourusername/byte",
         features: [
             "Full-Stack",
@@ -140,17 +148,17 @@ export const mobileApplicationsProjects = [
             },
             {
                 type: "screenshot",
-                path: beevrgoMap, // Replace with actual screenshot
+                path: beevrgoMap3, // Replace with actual screenshot
                 caption: "Settings and preferences"
             },
             {
                 type: "screenshot",
-                path: beevrgoMap2, // Replace with actual screenshot
+                path: beevrgoSettings, // Replace with actual screenshot
                 caption: "Settings and preferences"
             },
             {
                 type: "screenshot",
-                path: beevrgoMap, // Replace with actual screenshot
+                path: beevrgoReservations, // Replace with actual screenshot
                 caption: "Settings and preferences"
             },
         ]
