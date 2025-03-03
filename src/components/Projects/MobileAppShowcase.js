@@ -50,7 +50,7 @@ const MobileAppShowcase = ({ project }) => {
                                 Screenshots
                             </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        {/* <Nav.Item>
                             <Nav.Link
                                 active={activeTab === "videos"}
                                 onClick={() => setActiveTab("videos")}
@@ -59,7 +59,7 @@ const MobileAppShowcase = ({ project }) => {
                                 <BsPlayCircle className="me-2" />
                                 Videos
                             </Nav.Link>
-                        </Nav.Item>
+                        </Nav.Item> */}
                         <Nav.Item>
                             <Nav.Link
                                 active={activeTab === "info"}
@@ -131,8 +131,8 @@ const MobileAppShowcase = ({ project }) => {
                                 {project.media && project.media.length > 0 && (
                                     <div className="consistent-thumbnails">
                                         {project.media.map((item, index) => (
-                                            <div 
-                                                key={index} 
+                                            <div
+                                                key={index}
                                                 className={`consistent-thumbnail ${index === activeSlide ? "active" : ""}`}
                                                 onClick={() => setActiveSlide(index)}
                                             >
@@ -150,52 +150,6 @@ const MobileAppShowcase = ({ project }) => {
                                     </div>
                                 )}
                             </div>
-                        </div>
-                    )}
-
-                    {activeTab === "videos" && (
-                        <div className="videos-section">
-                            {/* Use VideoCarousel if videos are available */}
-                            {project.videos && project.videos.length > 0 ? (
-                                <VideoCarousel videos={project.videos} />
-                            ) : project.demoVideo ? (
-                                <div className="video-container">
-                                    <h3 className="section-title">
-                                        App <span className="highlight">Demonstrations</span>
-                                    </h3>
-                                    <VideoPlayer
-                                        videoId={project.demoVideo}
-                                        title={`${project.title} Demo`}
-                                        isMobileAppDemo={true}
-                                    />
-                                </div>
-                            ) : (
-                                <div className="text-center p-4">
-                                    <h3 className="section-title">
-                                        App <span className="highlight">Demonstrations</span>
-                                    </h3>
-                                    <p className="text-white">No demo videos available yet.</p>
-                                </div>
-                            )}
-
-                            {/* Additional videos section (if needed for backward compatibility) */}
-                            {!project.videos && project.additionalVideos && project.additionalVideos.length > 0 && (
-                                <div className="additional-videos">
-                                    <h4 className="subsection-title">Feature Walkthroughs</h4>
-
-                                    <Row>
-                                        {project.additionalVideos.map((video, index) => (
-                                            <Col md={6} key={index} className="mb-4">
-                                                <VideoPlayer
-                                                    videoId={video.id}
-                                                    title={video.title}
-                                                    isMobileAppDemo={true}
-                                                />
-                                            </Col>
-                                        ))}
-                                    </Row>
-                                </div>
-                            )}
                         </div>
                     )}
 

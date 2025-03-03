@@ -40,7 +40,7 @@ export const webProjectsData = [
         title: "Manager.io",
         description: "An HR Management application that streamlines employee data management, attendance tracking, and performance reviews. Built with modern web technologies and focused on user experience.",
         demoLink: "https://managerio.vercel.app/employees",
-        ghLink: "https://github.com/yourusername/managerio",
+        ghLink: "https://github.com/knee-rel/managerio",
         features: [
             "Employee profiles",
             "Attendance tracking",
@@ -72,7 +72,7 @@ export const webProjectsData = [
         imgPath: polydoor,
         isBlog: false,
         title: "Polydoor PH",
-        description: "A comprehensive website for BYTE organization showcasing their services, team members, and achievements. Features a modern design with interactive elements.",
+        description: "A website dedicated for a door wholesaler in the Philippines. Features a comprehensive catalog with a quotation form for door model inquiries.",
         demoLink: "https://polydoor-philippines.com/",
         ghLink: "https://github.com/yourusername/byte",
         features: [
@@ -90,7 +90,7 @@ export const webProjectsData = [
         isBlog: false,
         title: "Place Finder",
         description: "Making avid travellers users place documentation easier by allowing them to review and document their favorite places.",
-        demoLink: "#",
+        demoLink: "https://mern-digital-espresso.vercel.app/",
         ghLink: "https://github.com/yourusername/byte",
         features: [
             "Maps Integration",

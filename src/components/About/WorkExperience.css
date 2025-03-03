@@ -1,0 +1,80 @@
+.experience-card {
+    background-color: rgba(33, 37, 41, 0.8) !important;
+    border: 1px solid rgba(82, 88, 93, 0.3) !important;
+    color: #e9ecef !important;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px !important;
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-color: rgba(82, 188, 193, 0.4) !important;
+}
+
+.experience-title {
+    color: #64ffda !important;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.company-name {
+    color: #ccd6f6;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.experience-type {
+    font-size: 0.85rem;
+    color: #8892b0;
+    font-style: italic;
+}
+
+.experience-duration {
+    color: #8892b0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.achievements-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.achievements-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: #e9ecef;
+}
+
+.achievements-list li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #64ffda;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .experience-duration {
+        justify-content: flex-start;
+        margin-top: 5px;
+    }
+}

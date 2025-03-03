@@ -1,0 +1,40 @@
+/* Since we're using the same styling as WorkExperience, 
+   we only need to add styles for education-specific elements */
+
+.education-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 8px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.education-logo {
+    max-width: 64px;
+    max-height: 64px;
+    object-fit: contain;
+}
+
+.program-name {
+    color: #8892b0;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .education-logo-container {
+        width: 70px;
+        height: 70px;
+    }
+
+    .education-logo {
+        max-width: 54px;
+        max-height: 54px;
+    }
+}

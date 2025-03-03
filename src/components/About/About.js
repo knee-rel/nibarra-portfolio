@@ -4,6 +4,8 @@ import Particle from "../Particle";
 import Github from "./Github";
 import Aboutcard from "./AboutCard";
 import Education from "./Education";
+import WorkExperience from "./WorkExperience"; // Import the new component
+import "./WorkExperience.css"; // Import the CSS
 
 // Image Imports
 import smuLogo from "../../Assets/smu_logo.png";
@@ -76,7 +78,7 @@ function About() {
     <Container fluid className="about-section">
       <Particle />
       <Container>
-        <Row style={{ justifyContent: "center", padding: "10px" }}>
+        {/* <Row style={{ justifyContent: "center", padding: "10px" }}>
           <Col
             md={12}
             style={{
@@ -90,7 +92,11 @@ function About() {
             </h1>
             <Aboutcard />
           </Col>
-        </Row>
+        </Row> */}
+
+        {/* Add the Work Experience section before Education */}
+        <WorkExperience />
+
         <h1 className="project-heading">
           Educational <strong className="teal">Background </strong>
         </h1>

@@ -25,11 +25,11 @@ function Home2() {
               MINI <span className="teal"> BIO </span>
             </h1>
             <p className="home-about-body">
-              Tech enthusiast skilled in
+              Full-stack software engineer skilled in
               <i>
-                <b className="teal"> Python and JavaScript, </b>
+                <b className="teal"> JavaScript, Dart, and Python. </b>
               </i>
-              aspiring to excel in Data & Analytics, AI, & Web Development.
+              Currently exploring all things tech, including Machine Learning and AI.
               <br />
               <br />A perpetual learner with strong time management,
               flexibility, and dependability. Open to feedback, I bring a growth

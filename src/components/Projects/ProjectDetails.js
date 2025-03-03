@@ -313,43 +313,34 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
             <Card bg="dark" className="mb-4 sidebar-card">
               <Card.Body>
                 {/* Quick Actions Section */}
-                {/* <div className="project-actions mb-4">
+                <div className="project-actions mb-4">
                   <h3 style={{ color: "white", marginBottom: "15px" }}>
                     Project <span style={{ color: "#64ffda" }}>Links</span>
                   </h3>
-                  {project.ghLink && (
-                    <Button
-                      variant="primary"
-                      href={project.ghLink}
-                      target="_blank"
-                      className="w-100 mb-3 d-flex align-items-center justify-content-center"
-                      style={{
-                        gap: "0.5rem",
-                        backgroundColor: "#623686",
-                        borderColor: "#623686",
-                        padding: "10px"
-                      }}
-                    >
-                      <BsGithub size={18} /> View Source Code
-                    </Button>
+
+                  {/* Video Demo Links - Dynamically created from videos array */}
+                  {project.videos && project.videos.length > 0 && (
+                    <>
+                      {project.videos.map((video, index) => (
+                        <Button
+                          key={index}
+                          variant="primary"
+                          href={video.id}
+                          target="_blank"
+                          className="w-100 mb-3 d-flex align-items-center justify-content-center"
+                          style={{
+                            gap: "0.5rem",
+                            backgroundColor: "#4b2a5e", // Slightly darker than the Demo button
+                            borderColor: "#4b2a5e",
+                            padding: "10px"
+                          }}
+                        >
+                          <BsBoxArrowUpRight size={18} /> {video.title}
+                        </Button>
+                      ))}
+                    </>
                   )}
-                  {project.demoLink && (
-                    <Button
-                      variant="primary"
-                      href={project.demoLink}
-                      target="_blank"
-                      className="w-100 d-flex align-items-center justify-content-center"
-                      style={{
-                        gap: "0.5rem",
-                        backgroundColor: "#623686",
-                        borderColor: "#623686",
-                        padding: "10px"
-                      }}
-                    >
-                      <CgWebsite size={18} /> {isMobileProject ? 'App Store' : 'Live Demo'}
-                    </Button>
-                  )}
-                </div> */}
+                </div>
 
                 {/* Tech Stack */}
                 <div className="mb-4">
