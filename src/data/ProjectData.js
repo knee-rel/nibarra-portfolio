@@ -121,7 +121,17 @@ export const mobileApplicationsProjects = [
         imgPath: beevrgoMap,
         isBlog: false,
         title: "beEVrgo",
-        description: "An eletronic vehicle charger booking app for clients based in Canada.",
+        description: "An electric vehicle charger booking app for clients based in Canada.",
+        extendedDescription: "beEVrgo is a comprehensive mobile application designed to solve the challenges of finding and booking electric vehicle charging stations across Canada. The app provides real-time availability information, reservation capabilities, and payment processing in a seamless user experience.",
+        problemStatement: "Electric vehicle owners in Canada struggle with the fragmented nature of charging infrastructure, including difficulty finding available chargers, incompatible payment systems, and uncertain reliability of charging stations.",
+        solution: "beEVrgo consolidates information from multiple charging networks, provides real-time availability data, enables advance reservations, and streamlines payment through a single platform while allowing users to rate and review stations.",
+        targetAudience: "Electric vehicle owners in Canada seeking convenient access to charging infrastructure for daily commutes and road trips.",
+        developmentProcess: "The project followed a user-centered design approach, starting with extensive research among EV owners to identify pain points. We used React Native for cross-platform development and implemented agile methodologies with two-week sprints and continuous user testing.",
+        challenges: "Major challenges included integrating with multiple charging networks with inconsistent APIs, implementing reliable real-time availability updates, and creating an offline mode for areas with poor connectivity. We addressed these by developing a standardized API adapter layer, implementing a hybrid polling/webhook system for updates, and creating a robust local caching mechanism.",
+        teamContribution: "The project was developed by a team of six, including three mobile developers, one backend developer, one UI/UX designer, and one project manager. I served as the lead mobile developer, focusing on the map implementation, reservation system, and payment processing integration.",
+        technicalArchitecture: "The app is built with Flutter for the frontend, with a Django backend deployed on AWS. It uses PostgreSQL for data storage, and integrates with multiple third-party APIs for charger data. The real-time capabilities are powered by occp.",
+        technicalDecisions: "We chose Flutter over native development to accelerate delivery for both iOS and Android platforms. For mapping, we selected Google Maps due to better offline capabilities and customization options. The app implements a location-based caching strategy to minimize data usage while maintaining responsiveness.",
+        apiIntegrations: "The app integrates with various EV charging networks (ChargePoint, FLO, Tesla Supercharger network), mapping services (Google Maps), and authentication providers.",
         demoLink: "#",
         demoVideo: 'https://drive.google.com/file/d/10mFUtN9t6EowROe47AZ7Ts8N8iNSb_JO/view?usp=sharing',
         videos: [
@@ -129,12 +139,47 @@ export const mobileApplicationsProjects = [
             { id: "https://drive.google.com/file/d/10mFUtN9t6EowROe47AZ7Ts8N8iNSb_JO/view?usp=sharing", title: "User Tutorial" }
         ],
         ghLink: "https://github.com/yourusername/byte",
+        tools: [
+            "Flutter",
+            "Django",
+            "PostgresQL",
+            "OCPP",
+            "Google Maps",
+        ],
         features: [
             "Full-Stack",
             "Real-Time Booking App",
         ],
+        // detailedFeatures: [
+        //     {
+        //         name: "Interactive Charger Map",
+        //         description: "Real-time map showing charger locations, availability, and detailed information including compatible connectors and charging speeds.",
+        //         technicalDetails: "Implemented using Mapbox GL with custom markers, clusters for improved performance, and geospatial queries for relevant data loading."
+        //     },
+        //     {
+        //         name: "Smart Reservation System",
+        //         description: "Allows users to book charging slots in advance, with intelligent time slot suggestions based on typical charging duration for their vehicle model.",
+        //         technicalDetails: "Uses a custom-built scheduling algorithm that accounts for charging speed, vehicle battery capacity, and historical usage patterns."
+        //     },
+        //     {
+        //         name: "Unified Payment Processing",
+        //         description: "Single payment system that works across multiple charging networks, with support for saved payment methods and digital receipts.",
+        //         technicalDetails: "Integrates with Stripe for payment processing, implementing a secure token-based system to authorize charges across partner networks."
+        //     },
+        //     {
+        //         name: "Trip Planner",
+        //         description: "Plan long journeys with optimal charging stops based on your vehicle's range, preferred charging networks, and amenities preferences.",
+        //         technicalDetails: "Combines mapping APIs with a proprietary routing algorithm that considers battery range, elevation changes, and real-time charger availability."
+        //     },
+        //     {
+        //         name: "Offline Mode",
+        //         description: "Access previously viewed charger information and reservations even without internet connectivity, crucial for remote areas.",
+        //         technicalDetails: "Implements sophisticated local storage management with data synchronization when connectivity is restored."
+        //     }
+        // ],
         status: "Completed",
         timeline: "Started: Jul 2024, Completed: Feb 2025",
+        teamSize: "3 team members",
         media: [
             {
                 type: "screenshot",
@@ -143,22 +188,22 @@ export const mobileApplicationsProjects = [
             },
             {
                 type: "screenshot",
-                path: beevrgoMap2, // Replace with actual screenshot
+                path: beevrgoMap2,
                 caption: "Charger details screen"
             },
             {
                 type: "screenshot",
-                path: beevrgoMap3, // Replace with actual screenshot
-                caption: "Settings and preferences"
+                path: beevrgoMap3,
+                caption: "Search bar and search results"
             },
             {
                 type: "screenshot",
-                path: beevrgoSettings, // Replace with actual screenshot
-                caption: "Settings and preferences"
+                path: beevrgoReservations,
+                caption: "Reservations screen"
             },
             {
                 type: "screenshot",
-                path: beevrgoReservations, // Replace with actual screenshot
+                path: beevrgoSettings,
                 caption: "Settings and preferences"
             },
         ]

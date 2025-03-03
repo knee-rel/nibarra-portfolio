@@ -8,7 +8,9 @@ import {
     BsChevronRight,
     BsCircleFill,
     BsGithub,
-    BsCloudDownload
+    BsCloudDownload,
+    BsCodeSquare,
+    BsArrowRight
 } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
 import VideoPlayer from "./VideoPlayer";
@@ -197,62 +199,114 @@ const MobileAppShowcase = ({ project }) => {
                     {activeTab === "info" && (
                         <div className="info-section">
                             <h3 className="section-title">
-                                App <span className="highlight">Information</span>
+                                Project <span className="highlight">Details</span>
                             </h3>
 
-                            <div className="project-description">
-                                <h4 className="info-subtitle">Overview</h4>
-                                <p className="info-text">{project.description}</p>
+                            {/* Extended Project Description */}
+                            <div className="info-block">
+                                <h4 className="info-subtitle">Project Overview</h4>
+                                <p className="info-text">{project.extendedDescription || project.description}</p>
+
+                                {project.problemStatement && (
+                                    <>
+                                        <h5 className="info-subtitle mt-4">Problem Statement</h5>
+                                        <p className="info-text">{project.problemStatement}</p>
+                                    </>
+                                )}
+
+                                {project.solution && (
+                                    <>
+                                        <h5 className="info-subtitle mt-4">Solution</h5>
+                                        <p className="info-text">{project.solution}</p>
+                                    </>
+                                )}
+
+                                {project.targetAudience && (
+                                    <>
+                                        <h5 className="info-subtitle mt-4">Target Audience</h5>
+                                        <p className="info-text">{project.targetAudience}</p>
+                                    </>
+                                )}
                             </div>
 
-                            <Row className="mt-4">
-                                <Col md={6}>
-                                    <div className="info-block">
-                                        <h4 className="info-subtitle">Platforms</h4>
-                                        <div className="badges-container">
-                                            <span className="platform-badge">iOS</span>
-                                            <span className="platform-badge">Android</span>
-                                        </div>
-                                    </div>
-                                </Col>
+                            {/* Development Process */}
+                            {(project.developmentProcess || project.challenges || project.teamContribution) && (
+                                <div className="info-block mt-5">
+                                    <h4 className="info-subtitle">Development Process</h4>
 
-                                <Col md={6}>
-                                    <div className="info-block">
-                                        <h4 className="info-subtitle">Status</h4>
-                                        <div className="badges-container">
-                                            <span className="status-badge">{project.status || "Active"}</span>
-                                        </div>
-                                    </div>
-                                </Col>
-                            </Row>
+                                    {project.developmentProcess && (
+                                        <>
+                                            <h5 className="info-subtitle mt-4">Approach & Methodology</h5>
+                                            <p className="info-text">{project.developmentProcess}</p>
+                                        </>
+                                    )}
 
-                            <div className="info-block mt-4">
-                                <h4 className="info-subtitle">Technology Stack</h4>
-                                <div className="badges-container">
-                                    {project.tools?.map((tool, index) => (
-                                        <span key={index} className="tech-badge">{tool}</span>
-                                    ))}
-                                </div>
-                            </div>
+                                    {project.challenges && (
+                                        <>
+                                            <h5 className="info-subtitle mt-4">Challenges & Solutions</h5>
+                                            <p className="info-text">{project.challenges}</p>
+                                        </>
+                                    )}
 
-                            {project.timeline && (
-                                <div className="info-block mt-4">
-                                    <h4 className="info-subtitle">Development Timeline</h4>
-                                    <p className="info-text">{project.timeline}</p>
+                                    {project.teamContribution && (
+                                        <>
+                                            <h5 className="info-subtitle mt-4">Team Contribution</h5>
+                                            <p className="info-text">{project.teamContribution}</p>
+                                        </>
+                                    )}
                                 </div>
                             )}
 
-                            {project.features && project.features.length > 0 && (
-                                <div className="info-block mt-4">
+                            {/* Technical Architecture */}
+                            {(project.technicalArchitecture || project.technicalDecisions || project.databaseStructure || project.apiIntegrations) && (
+                                <div className="info-block mt-5">
+                                    <h4 className="info-subtitle">Technical Architecture</h4>
+
+                                    {project.technicalArchitecture && (
+                                        <>
+                                            <h5 className="info-subtitle mt-4">System Design Overview</h5>
+                                            <p className="info-text">{project.technicalArchitecture}</p>
+                                        </>
+                                    )}
+
+                                    {project.technicalDecisions && (
+                                        <>
+                                            <h5 className="info-subtitle mt-4">Key Technical Decisions</h5>
+                                            <p className="info-text">{project.technicalDecisions}</p>
+                                        </>
+                                    )}
+
+                                    {project.databaseStructure && (
+                                        <>
+                                            <h5 className="info-subtitle mt-4">Database Structure</h5>
+                                            <p className="info-text">{project.databaseStructure}</p>
+                                        </>
+                                    )}
+
+                                    {project.apiIntegrations && (
+                                        <>
+                                            <h5 className="info-subtitle mt-4">API Integrations</h5>
+                                            <p className="info-text">{project.apiIntegrations}</p>
+                                        </>
+                                    )}
+                                </div>
+                            )}
+
+                            {/* Key Features Section */}
+                            {project.detailedFeatures && project.detailedFeatures.length > 0 && (
+                                <div className="info-block mt-5">
                                     <h4 className="info-subtitle">Key Features</h4>
                                     <Row className="features-grid">
-                                        {project.features.map((feature, index) => (
-                                            <Col sm={6} md={4} key={index} className="feature-col">
+                                        {project.detailedFeatures.map((feature, index) => (
+                                            <Col sm={12} key={index} className="feature-col">
                                                 <div className="feature-item">
-                                                    <div className="feature-icon">
-                                                        <BsCircleFill />
+                                                    <div className="feature-text">
+                                                        <h5 className="info-subtitle">{feature.name}</h5>
+                                                        <p>{feature.description}</p>
+                                                        {feature.technicalDetails && (
+                                                            <p><strong>Technical Implementation:</strong> {feature.technicalDetails}</p>
+                                                        )}
                                                     </div>
-                                                    <div className="feature-text">{feature}</div>
                                                 </div>
                                             </Col>
                                         ))}
@@ -260,32 +314,43 @@ const MobileAppShowcase = ({ project }) => {
                                 </div>
                             )}
 
-                            <div className="info-block mt-4">
-                                <h4 className="info-subtitle">Links</h4>
-                                <div className="links-container">
-                                    {project.ghLink && (
+                            {/* Future Development */}
+                            {(project.plannedImprovements || project.roadmap) && (
+                                <div className="info-block mt-5">
+                                    <h4 className="info-subtitle">Future Development</h4>
+
+                                    {project.plannedImprovements && (
+                                        <>
+                                            <h5 className="info-subtitle mt-4">Planned Improvements</h5>
+                                            <p className="info-text">{project.plannedImprovements}</p>
+                                        </>
+                                    )}
+
+                                    {project.roadmap && (
+                                        <>
+                                            <h5 className="info-subtitle mt-4">Product Roadmap</h5>
+                                            <p className="info-text">{project.roadmap}</p>
+                                        </>
+                                    )}
+                                </div>
+                            )}
+
+                            {/* Source Code Section (if applicable) */}
+                            {project.ghLink && (
+                                <div className="info-block mt-5">
+                                    <h4 className="info-subtitle">Source Code</h4>
+                                    <div className="d-flex justify-content-center mt-4">
                                         <Button
                                             variant="primary"
                                             href={project.ghLink}
                                             target="_blank"
                                             className="link-button github-button"
                                         >
-                                            <BsGithub /> Source Code
+                                            <BsCodeSquare className="me-2" /> View Repository <BsArrowRight className="ms-2" />
                                         </Button>
-                                    )}
-
-                                    {project.demoLink && (
-                                        <Button
-                                            variant="primary"
-                                            href={project.demoLink}
-                                            target="_blank"
-                                            className="link-button app-store-button"
-                                        >
-                                            <BsCloudDownload /> App Store
-                                        </Button>
-                                    )}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     )}
                 </Card.Body>

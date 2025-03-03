@@ -17,27 +17,6 @@ function Projects({ webProjectsData, dataScienceProjects, mobileApplicationsProj
         <p style={{ color: "white" }}>
           Here are the projects that I have built throughout the years.
         </p>
-
-        <h3 className="project-heading">
-          Web <strong className="teal">Development</strong>
-        </h3>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          {webProjectsData.map((project, index) => (
-            <Col
-              xl={3}
-              lg={4}
-              md={6}
-              sm={12}
-              className="project-card"
-              key={index}
-            >
-              <Link to={`/project/${project.id}`}>
-                <ProjectCard {...project} />
-              </Link>
-            </Col>
-          ))}
-        </Row>
-
         <h3 className="project-heading mobile-projects-heading">
           Mobile <strong className="teal">Development</strong>
         </h3>
@@ -62,6 +41,26 @@ function Projects({ webProjectsData, dataScienceProjects, mobileApplicationsProj
         ) : (
           <p style={{ color: "white" }}>Coming soon</p>
         )}
+
+        <h3 className="project-heading">
+          Web <strong className="teal">Development</strong>
+        </h3>
+        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+          {webProjectsData.map((project, index) => (
+            <Col
+              xl={3}
+              lg={4}
+              md={6}
+              sm={12}
+              className="project-card"
+              key={index}
+            >
+              <Link to={`/project/${project.id}`}>
+                <ProjectCard {...project} />
+              </Link>
+            </Col>
+          ))}
+        </Row>
 
         <h3 className="project-heading">
           Data <strong className="teal">Science</strong>
