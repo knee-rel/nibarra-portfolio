@@ -44,7 +44,7 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
   }
 
   // Determine if this is a mobile app project by checking the ID
-  const isMobileProject = project.id.toString().startsWith("5");
+  const isMobileProject = project.id.toString().startsWith("51");
 
   return (
     <Container fluid className="project-section">

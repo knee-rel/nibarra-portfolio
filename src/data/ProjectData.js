@@ -22,8 +22,12 @@ export const webProjectsData = [
         imgPath: ateneoTrade,
         isBlog: false,
         title: "Ateneo Trade",
-        description: "Enabling users to buy and sell, in moderated environments.",
+        description: "Enabling university verified and affiliated users to buy and sell, in moderated environments.",
+        problemStatement: "How do we provide a seamless buy-sell/bid-buy-sell experience to users in moderated environments?",
+        solution: "Producing a flexible e-commerce website providing a new experience, buy and bid, for users interested to score deals. The users are also verified via their university-affiliated email addresses.",
+        targetAudience: "University Students",
         demoLink: "https://ateneo-trade.vercel.app/",
+        demoVideo: "https://drive.google.com/file/d/1jg6HKFbXRAFAGbMBrL1ec8uKUFq7Xd61/view?usp=drive_link",
         ghLink: "https://github.com/yourusername/ateneo-trade",
         features: [
             "E-commerce",
@@ -31,7 +35,14 @@ export const webProjectsData = [
             "User authentication"
         ],
         status: "Completed",
-        timeline: "Started: Jan 2023, Released: Mar 2023"
+        tools: [
+            "Mongo DB",
+            "Express",
+            "React",
+            "Node.js",
+            "Tailwind CSS",
+        ],
+        timeline: "Started: Jan 2023, Released: Aug 2023"
     },
     {
         id: "2",
@@ -48,7 +59,11 @@ export const webProjectsData = [
             "Report generation"
         ],
         status: "Completed",
-        timeline: "Started: Mar 2024, Released: Mar 2024"
+        tools: [
+            "Vue.js",
+            "Node.js",
+        ],
+        timeline: "Started: Mar 2024, Released: April 2024"
     },
     {
         id: "3",
@@ -63,6 +78,11 @@ export const webProjectsData = [
             "Team showcase",
             "Project portfolio",
             "Contact form"
+        ],
+        tools: [
+            "Gatbsy.js",
+            "Tailwind CSS",
+            "Strapi.io",
         ],
         status: "Completed",
         timeline: "Started: Sept 2021, Released: Oct 2021"
@@ -82,6 +102,11 @@ export const webProjectsData = [
             "Contact form"
         ],
         status: "Completed",
+        tools: [
+            "WordPress",
+            "PHP",
+            "CSS",
+        ],
         timeline: "Started: Jan 2023, Released: Aug 2023"
     },
     {
@@ -99,6 +124,12 @@ export const webProjectsData = [
             "Contact form"
         ],
         status: "Maintenance",
+        tools: [
+            "Mongo DB",
+            "Express",
+            "React",
+            "Node.js",
+        ],
         timeline: "Started: Jul 2023, Released: Aug 2023"
     },
     {
@@ -114,6 +145,10 @@ export const webProjectsData = [
             "Team showcase",
             "Project portfolio",
             "Contact form"
+        ],
+        tools: [
+            "Vue.js",
+            "Strapi.io"
         ],
         status: "Completed",
         timeline: "Started: Sept 2021, Released: Oct 2021"
