@@ -1,8 +1,7 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Particle from "../Particle";
 import Github from "./Github";
-import Aboutcard from "./AboutCard";
 import Education from "./Education";
 import WorkExperience from "./WorkExperience"; // Import the new component
 import "./WorkExperience.css"; // Import the CSS

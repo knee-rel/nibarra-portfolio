@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import { DiPython, DiMsqlServer } from "react-icons/di";
 import { SiFlutter } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 
