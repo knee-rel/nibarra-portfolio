@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -13,17 +13,21 @@ import "./ProjectDetails.css";
 import "./MobileProjectStyles.css";
 import "./MobileProjectDisplay.css";
 
-function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicationsProjects }) {
+function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicationsProjects, qaProjects }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const allProjects = [
     ...(webProjectsData || []),
     ...(dataScienceProjects || []),
-    ...(mobileApplicationsProjects || [])
+    ...(mobileApplicationsProjects || []),
+    ...(qaProjects || []),
   ];
 
   const project = allProjects.find((p) => p.id.toString() === id.toString());
+  const isQaProject = (qaProjects || []).some(
+    (p) => p.id.toString() === id.toString()
+  );
 
   if (!project) {
     return (
@@ -63,6 +67,19 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
 
         <h1 style={{ color: "white", marginBottom: "20px", textAlign: "center" }}>{project.title}</h1>
 
+        {isQaProject && (
+          <div className="text-center mb-4" style={{ position: "relative", zIndex: 10 }}>
+            <Link to="/qa" style={{ textDecoration: "none" }}>
+              <Button
+                variant="primary"
+                style={{ fontWeight: 600 }}
+              >
+                QA practice, process map &amp; document templates &nbsp;&rarr;
+              </Button>
+            </Link>
+          </div>
+        )}
+
         <Row className="mt-4">
           <Col lg={8}>
             {/* Main content area */}
@@ -72,7 +89,7 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
             ) : (
               // Standard project display code for web projects
               <>
-                {/* Standard Project Screenshot */}
+                {/* Standard Project Screenshot or Primary Video */}
                 <Card className="mb-5" bg="dark">
                   <Card.Body style={{ padding: "20px" }}>
                     <div style={{
@@ -80,11 +97,24 @@ function ProjectDetails({ webProjectsData, dataScienceProjects, mobileApplicatio
                       overflow: "hidden",
                       aspectRatio: "16/9"
                     }}>
-                      <img
-                        src={project.imgPath}
-                        alt={project.title}
-                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                      />
+                      {project.primaryVideo ? (
+                        <video
+                          controls
+                          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                        >
+                          <source
+                            src={project.primaryVideo}
+                            type={project.primaryVideo.endsWith(".webm") ? "video/webm" : "video/mp4"}
+                          />
+                          Your browser does not support the video tag.
+                        </video>
+                      ) : (
+                        <img
+                          src={project.imgPath}
+                          alt={project.title}
+                          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                        />
+                      )}
                     </div>
                   </Card.Body>
                 </Card>

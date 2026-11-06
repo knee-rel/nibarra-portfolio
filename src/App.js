@@ -7,8 +7,9 @@ import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import ProjectDetails from "./components/Projects/ProjectDetails";
+import QAPractice from "./components/QA/QAPractice";
 // Check the correct path for your project data
-import { webProjectsData, dataScienceProjects, mobileApplicationsProjects } from "./data/ProjectData";
+import { webProjectsData, dataScienceProjects, mobileApplicationsProjects, qaProjects } from "./data/ProjectData";
 import {
   BrowserRouter as Router,
   Route,
@@ -43,6 +44,7 @@ function App() {
             webProjectsData={webProjectsData}
             dataScienceProjects={dataScienceProjects}
             mobileApplicationsProjects={mobileApplicationsProjects}
+            qaProjects={qaProjects}
           />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
@@ -52,10 +54,12 @@ function App() {
               <ProjectDetails
                 webProjectsData={webProjectsData}
                 dataScienceProjects={dataScienceProjects}
-                mobileApplicationsProjects={mobileApplicationsProjects} // Fixed prop name
+                mobileApplicationsProjects={mobileApplicationsProjects}
+                qaProjects={qaProjects}
               />
             }
           />
+          <Route path="/qa" element={<QAPractice />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />

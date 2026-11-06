@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
+import { BsCheck2Square } from "react-icons/bs";
 import { ImBlog } from "react-icons/im";
 import {
   AiFillStar,
@@ -81,6 +82,16 @@ function NavBar() {
                   style={{ marginBottom: "2px" }}
                 />{" "}
                 Projects
+              </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/qa"
+                onClick={() => updateExpanded(false)}
+              >
+                <BsCheck2Square style={{ marginBottom: "2px" }} /> QA
               </Nav.Link>
             </Nav.Item>
 
