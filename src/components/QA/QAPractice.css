@@ -1,0 +1,381 @@
+/* QA Practice page (/qa)
+   Reuses the site's existing .project-section background and .project-heading
+   type scale; everything here is additive. */
+
+.qa-section {
+  padding-bottom: 70px !important;
+}
+
+.qa-lede {
+  color: #64ffda;
+  font-size: 1.15em;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 28px auto;
+  line-height: 1.6;
+}
+
+.qa-body {
+  color: white;
+  text-align: justify;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.qa-centered {
+  text-align: center;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.qa-h3 {
+  margin-top: 56px !important;
+  padding-bottom: 10px !important;
+}
+
+.qa-h4 {
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 18px;
+  font-size: 1.4em;
+}
+
+.qa-footnote {
+  color: #b5c6c6;
+  font-size: 0.9em;
+  text-align: center;
+  max-width: 900px;
+  margin: 8px auto 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Cards (shared) ─────────────────────────────────────────────── */
+
+.qa-metric-card,
+.qa-type-card,
+.qa-tool-card,
+.qa-severity-card,
+.qa-cta-card,
+.qa-template-card,
+.qa-diagram-card {
+  border: 1px solid rgba(100, 255, 218, 0.18) !important;
+  background-color: rgba(14, 22, 33, 0.82) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+
+.qa-type-card,
+.qa-metric-card,
+.qa-cta-card {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.qa-type-card:hover,
+.qa-metric-card:hover,
+.qa-cta-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(100, 255, 218, 0.5) !important;
+}
+
+/* ── Metrics ────────────────────────────────────────────────────── */
+
+.qa-metric-value {
+  color: #64ffda;
+  font-size: 2.4em;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.qa-metric-label {
+  color: white;
+  font-size: 1.02em;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.qa-metric-note {
+  color: #b5c6c6;
+  text-align: left;
+  font-size: 0.87em;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* ── Flow diagrams ──────────────────────────────────────────────── */
+
+.qa-diagram-card {
+  margin-bottom: 10px;
+}
+
+.qa-flow-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Keeps the serpentine legible on a phone instead of shrinking the text to
+     nothing; the wrapper scrolls horizontally below this width. */
+  min-width: 720px;
+}
+
+.qa-diagram-card .card-body {
+  overflow-x: auto;
+  padding: 18px;
+}
+
+.qa-flow-box {
+  fill: rgba(100, 255, 218, 0.07);
+  stroke: #64ffda;
+  stroke-width: 1.5;
+}
+
+.qa-flow-box-accent {
+  fill: rgba(100, 255, 218, 0.17);
+  stroke-width: 2;
+}
+
+.qa-flow-label {
+  fill: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.qa-flow-sublabel {
+  fill: #9fb6b6;
+  font-size: 11.5px;
+  font-style: italic;
+}
+
+.qa-flow-edge-label {
+  fill: #76abae;
+  font-size: 11.5px;
+  font-style: italic;
+  /* Dark halo so a label stays readable where it crosses its own edge. */
+  paint-order: stroke;
+  stroke: #0e1621;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+/* ── Severity ───────────────────────────────────────────────────── */
+
+.qa-severity-level {
+  font-weight: 700;
+  font-size: 1.05em;
+  margin-bottom: 6px;
+}
+
+.qa-sev-critical {
+  color: #ff6b6b;
+}
+.qa-sev-high {
+  color: #ffa94d;
+}
+.qa-sev-medium {
+  color: #ffd43b;
+}
+.qa-sev-low {
+  color: #8ce99a;
+}
+
+.qa-severity-meaning {
+  color: #d7e3e3;
+  text-align: left;
+  font-size: 0.9em;
+  line-height: 1.55;
+}
+
+/* ── Testing types ──────────────────────────────────────────────── */
+
+.qa-type-name {
+  color: #64ffda !important;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.qa-type-how {
+  color: #d7e3e3 !important;
+  font-size: 0.92em;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* ── Templates ──────────────────────────────────────────────────── */
+
+.qa-template-card {
+  margin-bottom: 32px;
+}
+
+.qa-template-title {
+  color: #64ffda;
+  font-size: 1.35em;
+  margin-bottom: 10px;
+}
+
+.qa-template-purpose {
+  color: white;
+  line-height: 1.7;
+  text-align: justify;
+  margin-bottom: 0;
+}
+
+.qa-template-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 6px;
+}
+
+/* Colour comes from the site's own .btn-primary — this only adds weight and
+   stops the label wrapping. */
+.qa-download-btn {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.qa-template-notes {
+  color: #d7e3e3;
+  text-align: left;
+  margin-top: 18px;
+  padding-left: 20px;
+  line-height: 1.65;
+}
+
+.qa-template-notes li {
+  margin-bottom: 8px;
+  font-size: 0.93em;
+}
+
+.qa-sheet-tag {
+  color: #76abae;
+  text-align: left;
+  font-size: 0.88em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 26px 0 12px 0;
+}
+
+.qa-preview {
+  margin-bottom: 22px;
+}
+
+.qa-preview-name {
+  color: #64ffda;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95em;
+  margin-bottom: 8px;
+}
+
+/* The preview tables are wide on purpose — they show the real column set.
+   Scrolling happens inside this box, never on the page. */
+.qa-preview-scroll {
+  overflow-x: auto;
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 8px;
+  max-width: 100%;
+}
+
+.qa-preview-table {
+  border-collapse: collapse;
+  min-width: 100%;
+  font-size: 0.8em;
+  margin: 0;
+}
+
+.qa-preview-table th {
+  background-color: rgba(100, 255, 218, 0.12);
+  color: #64ffda;
+  font-weight: 600;
+  padding: 9px 12px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(100, 255, 218, 0.25);
+}
+
+.qa-preview-table td {
+  color: #d7e3e3;
+  text-align: left;
+  padding: 9px 12px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  min-width: 110px;
+  max-width: 280px;
+}
+
+.qa-preview-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── Tooling ────────────────────────────────────────────────────── */
+
+.qa-tool-group {
+  color: #64ffda !important;
+  font-size: 1.05em;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.qa-tool-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.qa-tool-pill {
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.28);
+  color: #d7e3e3;
+  border-radius: 14px;
+  padding: 4px 11px;
+  font-size: 0.83em;
+}
+
+/* ── CTAs ───────────────────────────────────────────────────────── */
+
+.qa-cta-title {
+  color: #64ffda !important;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.qa-cta-text {
+  color: #d7e3e3 !important;
+  font-size: 0.92em;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.qa-cta-row a {
+  text-decoration: none;
+}
+
+/* ── Narrow screens ─────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .qa-lede {
+    font-size: 1.02em;
+  }
+
+  .qa-body,
+  .qa-template-purpose {
+    text-align: left;
+  }
+
+  .qa-h3 {
+    margin-top: 42px !important;
+  }
+
+  .qa-template-actions {
+    justify-content: flex-start;
+    padding-top: 14px;
+  }
+
+  .qa-metric-value {
+    font-size: 2em;
+  }
+
+  .qa-diagram-card .card-body {
+    padding: 12px;
+  }
+}

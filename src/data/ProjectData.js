@@ -1,4 +1,5 @@
 import ateneoTrade from "../Assets/Portfolio/ateneo-trade.png";
+import qaTestingImg from "../Assets/qa/qa_cover.png";
 import managerio from "../Assets/Portfolio/managerio.png";
 import byte from "../Assets/Portfolio/byte.png";
 import polydoor from "../Assets/Portfolio/polydoor.png";
@@ -23,6 +24,12 @@ import buzzinPayment1 from "../Assets/buzzin/buzzinPayment1.png";
 import buzzinPayment2 from "../Assets/buzzin/buzzinPayment2.png";
 import buzzinProfile from "../Assets/buzzin/buzzinProfile.png";
 import buzzinRestos from "../Assets/buzzin/buzzinRestos.png";
+import pwDashboardOverview from "../Assets/pw_analytics_db/dashboard_1.png";
+import pwDashboardSalesTrends from "../Assets/pw_analytics_db/dashboard2.png";
+import pwDashboardSalesTrends2 from "../Assets/pw_analytics_db/dashboard3.png";
+import pwDashboardTopSkus from "../Assets/pw_analytics_db/dashboard4.png";
+import pwDashboardStoreMix from "../Assets/pw_analytics_db/dashboard5.png";
+import pwDashboardSettlements from "../Assets/pw_analytics_db/dashboard6.png";
 
 export const webProjectsData = [
   {
@@ -140,6 +147,90 @@ export const webProjectsData = [
     tools: ["Vue.js", "Strapi.io"],
     status: "Completed",
     timeline: "Started: Sept 2021, Released: Oct 2021",
+  },
+  {
+    id: "7",
+    imgPath: pwDashboardOverview,
+    isBlog: false,
+    title: "Principal Analytics Dashboard",
+    description:
+      "Rearchitected a slow-loading sales & distribution reporting dashboard by moving the analytics read path off PostgreSQL and Redis and onto ClickHouse — cutting report load times from a coffee-break wait to well under a second.",
+    extendedDescription:
+      "The Principal Dashboard is the internal tool distributors and account managers use to check how a given principal — a brand carried across a network of sari-sari stores and megastores — is moving product: distinct SKUs sold per month, settlement history, store coverage by type and region. The original stack was ordinary and reasonable on paper — React frontend, FastAPI service, PostgreSQL as the system of record, Redis caching the most common queries — but every dashboard load meant a COUNT(DISTINCT ...), a SUM(...), or a GROUP BY across the sales table, exactly the workload a row-oriented OLTP database struggles with. Redis only helped for queries someone had already run; a new principal, year, or date range meant a fresh trip to Postgres regardless of cache warmth. I rebuilt the read path on ClickHouse, a column store built for vectorized scans, and used the same prototype to grow it into a five-report suite.",
+    problemStatement:
+      "How do we make a five-report sales & distribution dashboard — SKU counts, settlement history, sales trends, top SKUs, and store mix — load quickly for distributors and account managers, when every view requires expensive COUNT(DISTINCT), SUM, and GROUP BY aggregations that a row-oriented database and its cache struggle to serve for arbitrary filter combinations?",
+    solution:
+      "Moved reporting reads off PostgreSQL and its Redis cache entirely and onto ClickHouse, a columnar OLAP store where an aggregate query only reads the columns it needs. First proved the query path against the dashboard's actual aggregation patterns with a standalone FastAPI service and a single report, then built out four more reports on the same backend — Overview KPIs, Sales Trends with principal comparison, Top SKUs, and Store Mix — plus the shared platform pieces a real reporting tool needs: one date filter instead of five, CSV export, dark mode, and consistent loading/empty/error states.",
+    targetAudience:
+      "Distributors and account managers tracking how a given principal (brand) is performing across a network of sari-sari stores and megastores.",
+    developmentProcess:
+      "Built in two phases. First, proving the query path: with a ClickHouse cluster already available, I built a standalone FastAPI service against it (clickhouse-driver, no ORM) with a matching SKU Count view in React, to answer one question — could ClickHouse serve the dashboard's actual query patterns fast enough with no cache in front of it? It could. Second, building out the suite: using the same prototype as the template, I added four more reports against the same ClickHouse backend, plus a shared filter context, CSV export, dark mode, and unified loading/empty/error states.",
+    challenges:
+      "Wiring four report queries to fire in parallel off the Overview page's KPI row surfaced a real concurrency bug: clickhouse-driver's Client holds a single socket, and two coroutines hitting it at once threw a 'simultaneous queries on single connection' error. Rather than reach for a full connection pool — the right answer for a multi-user production service, but machinery a single local instance doesn't need yet — I wrapped each query in an asyncio.Lock for the same correctness at the current scale. Separately, the original prototype kept its year filter inside one chart component; once there was more than one report, that stopped making sense, so I lifted it into a shared React context that every report reads from, with only Settlement History keeping its own more granular date range.",
+    teamContribution:
+      "Built solo, end to end: the ClickHouse query prototype, all five reports, the FastAPI backend, the shared filtering context, and the reporting platform pieces (CSV export, dark mode, loading/empty/error states).",
+    technicalArchitecture:
+      "React 18 + Vite frontend (Ant Design, Recharts) talking to a FastAPI + Python asyncio backend, which reads directly from ClickHouse via clickhouse-driver — no cache layer in front of it, since the column store is fast enough on a cache miss that a separate caching tier stopped earning its complexity.",
+    technicalDecisions:
+      "Chose ClickHouse over a bigger Redis cache because caching doesn't change what happens on a miss, and a reporting page with an open-ended set of filters makes misses the common case, not the edge case — ClickHouse's columnar storage made the slow class of query structurally faster instead of just less frequent. Chose an asyncio.Lock over a connection pool for the single-connection concurrency bug, matching the fix to the actual current scale rather than building for hypothetical multi-user load.",
+    demoLink: "#",
+    demoVideo:
+      "https://drive.google.com/file/d/1-qfRHOf9AAheNK0ManSfVgfNzAEYYqzQ/view?usp=sharing",
+    ghLink: "#",
+    features: [
+      "Overview KPI Trend Cards",
+      "Sales Trends & Principal Comparison",
+      "Top SKUs Ranking",
+      "Store Mix by Type & Region",
+      "Settlement History",
+      "Shared Date Filter Context",
+      "CSV Export",
+      "Dark Mode",
+    ],
+    status: "Prototype",
+    tools: [
+      "React 18",
+      "Vite",
+      "Ant Design",
+      "Recharts",
+      "FastAPI",
+      "Python asyncio",
+      "ClickHouse",
+      "clickhouse-driver",
+    ],
+    timeline: "Built: 2026",
+    media: [
+      {
+        type: "screenshot",
+        path: pwDashboardOverview,
+        caption: "Overview — company-wide KPI trend cards and top principals by revenue",
+      },
+      {
+        type: "screenshot",
+        path: pwDashboardSalesTrends,
+        caption: "Sales Trends — distinct SKU count trend, filterable by principal",
+      },
+      {
+        type: "screenshot",
+        path: pwDashboardSalesTrends2,
+        caption: "Sales Trends — SKU velocity and revenue trend by principal",
+      },
+      {
+        type: "screenshot",
+        path: pwDashboardTopSkus,
+        caption: "Top SKUs — best-performing SKUs ranked by revenue",
+      },
+      {
+        type: "screenshot",
+        path: pwDashboardStoreMix,
+        caption: "Store Mix — store footprint by type and region",
+      },
+      {
+        type: "screenshot",
+        path: pwDashboardSettlements,
+        caption: "Settlement History — settlement activity for a selected date range",
+      },
+    ],
   },
 ];
 
@@ -365,5 +456,78 @@ export const dataScienceProjects = [
     ],
     status: "Completed",
     timeline: "Started: Sep 2023, Completed: Nov 2023",
+  },
+];
+
+export const qaProjects = [
+  {
+    id: "30",
+    imgPath: qaTestingImg,
+    isBlog: false,
+    title: "QA & Test Automation — Packworks",
+    description:
+      "Architected and built the entire automated testing layer for Packworks' Superstore Android app — from the Robot/Screen pattern infrastructure and E2E order payment chains, to a custom Excel reporting pipeline. Also wrote JUnit5 unit tests and Selenium + Python web automation scripts.",
+    extendedDescription:
+      "As part of the Packworks engineering team, I took full ownership of QA strategy and test automation for the Superstore Android app. I designed and built the /androidTests directory from scratch, establishing the Robot/Screen pattern architecture for instrumented UI tests using Espresso. I implemented a multi-test E2E order payment chain (PROCESSING → fulfill → ORDER CLAIMED → RECEIVED → PAID), cross-test state tracking via TestDataRegistry, flaky-test retry rules, and a custom reporting pipeline that outputs per-method and per-suite Excel files with failure classification, logcat capture, screenshot-on-failure, and form-factor tagging. On the unit test side, I wrote JUnit5 tests for ViewModels, API contracts, repositories, and data classes using a StandardTestDispatcher base class. Outside Android, I built Selenium + Python scripts for web-level automation. Manual QA was also conducted on two critical product flows: settlement loading and megastore onboarding.",
+    problemStatement:
+      "How do we catch regressions and verify correctness across Packworks' critical Android and web flows as the product scales — without relying on manual re-testing after every release?",
+    solution:
+      "Built a layered test strategy: instrumented E2E tests with Espresso (Robot/Screen pattern), JUnit5 unit tests for business logic, Selenium + Python for web automation, and structured manual QA for key onboarding flows. Topped with a custom reporting system so QA results are immediately actionable.",
+    features: [
+      "Espresso E2E — Robot/Screen Architecture",
+      "Order Payment E2E Chain (7 tests)",
+      "Custom Excel Reporting Pipeline",
+      "Failure Classification & Flaky Retry",
+      "JUnit5 ViewModel & API Unit Tests",
+      "Selenium + Python Web Automation",
+      "Manual QA — Settlement Loading",
+      "Manual QA — Megastore Onboarding",
+    ],
+    status: "Completed",
+    tools: [
+      "JUnit5",
+      "Espresso",
+      "Kotlin",
+      "Selenium",
+      "Python",
+      "Android",
+      "Hilt",
+      "Coroutines",
+    ],
+    timeline: "Packworks tenure",
+    ghLink: "#",
+    primaryVideo: "/qa/customer-directory-tablet-web.mp4",
+    media: [
+      {
+        type: "video",
+        path: "/qa/customer-directory-tablet-web.mp4",
+        caption: "Customer Directory — Tablet Automation Test",
+      },
+      {
+        type: "video",
+        path: "/qa/offline-test-manage-inventory-web.mp4",
+        caption: "Offline Test — Manage Inventory",
+      },
+      {
+        type: "video",
+        path: "/qa/screen-recording-20260622-175518-web.mp4",
+        caption: "Full Test Run — June 22 (Session 1)",
+      },
+      {
+        type: "video",
+        path: "/qa/screen-recording-20260622-205333-web.mp4",
+        caption: "Full Test Run — June 22 (Session 2)",
+      },
+      {
+        type: "video",
+        path: "/qa/screen-recording-20260623-113232-web.mp4",
+        caption: "Test Run — June 23",
+      },
+      {
+        type: "video",
+        path: "/qa/qa_test_demo-web.mp4",
+        caption: "Instrumented Suite — Full Run Walkthrough",
+      },
+    ],
   },
 ];
