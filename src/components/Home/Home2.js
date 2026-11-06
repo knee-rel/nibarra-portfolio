@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
 import nirelAvatar from "../../Assets/nirel-avatar.png";
 import Tilt from "react-parallax-tilt";
 import { FaLinkedinIn } from "react-icons/fa6";

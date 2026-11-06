@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import { CgCPlusPlus } from "react-icons/cg";
 import { DiPython, DiMsqlServer } from "react-icons/di";
 import {
   SiNumpy,
@@ -10,7 +9,6 @@ import {
   SiScipy,
   SiRstudio,
 } from "react-icons/si";
-import { FaHtml5, FaCss3, FaBootstrap, FaVuejs } from "react-icons/fa";
 
 function DataTechStack() {
   return (

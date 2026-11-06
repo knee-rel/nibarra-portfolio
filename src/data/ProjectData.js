@@ -19,7 +19,6 @@ import bossInbox from "../Assets/boss_app/boss_inbox.png";
 import buzzinHome from "../Assets/buzzin/buzzinHome.png";
 import buzzinCart from "../Assets/buzzin/buzzinCart.png";
 import buzzinItemDetails from "../Assets/buzzin/buzzinItemDetails.png";
-import buzzinLogin from "../Assets/buzzin/buzzinLogin.png";
 import buzzinPayment1 from "../Assets/buzzin/buzzinPayment1.png";
 import buzzinPayment2 from "../Assets/buzzin/buzzinPayment2.png";
 import buzzinProfile from "../Assets/buzzin/buzzinProfile.png";

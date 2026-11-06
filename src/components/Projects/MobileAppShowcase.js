@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Row, Col, Card, Nav } from "react-bootstrap";
 import {
     BsPhone,
-    BsPlayCircle,
     BsInfoCircle,
     BsChevronLeft,
     BsChevronRight,
@@ -11,8 +10,6 @@ import {
     BsArrowRight
 } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
-import VideoPlayer from "./VideoPlayer";
-import VideoCarousel from './VideoCarousel'
 import "./MobileAppShowcase.css";
 import "./ConsistentPhoneFrame.css"; // Import the consistent styles
 
